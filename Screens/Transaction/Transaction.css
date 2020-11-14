@@ -1,0 +1,54 @@
+input,
+select {
+	margin-bottom: 1rem;
+}
+
+label {
+	margin: 0;
+	width: 100%;
+	text-align: left;
+}
+
+#formCategory {
+	display: none;
+	flex-flow: column;
+	width: 100%;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 1.5rem;
+}
+
+#formDesp {
+	display: none;
+	flex-flow: column;
+	width: 100%;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 1.5rem;
+}
+
+#formRece {
+	display: none;
+	flex-flow: column;
+	width: 100%;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 1.5rem;
+}
+
+.form-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 5rem;
+}
+
+.form-register {
+	width: 100%;
+	max-width: 900px;
+}
+
+.cursor {
+	cursor: pointer;
+}
