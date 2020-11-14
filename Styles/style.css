@@ -23,6 +23,12 @@ body {
   flex-flow: column;
 }
 
+.perfilbody {
+  background: white;
+  display: flex;
+  flex-flow: column;
+}
+
 /* Image */
 .image {
   width: 100%;
@@ -50,6 +56,11 @@ main div {
 
 main div h3 {
   font-size: 25px;
+}
+
+main p {
+  text-align: center;
+  font-size: 18px;
 }
 /*main end*/
 
@@ -88,6 +99,24 @@ article {
   font-size: 16px;
   margin: 0;
 }
+
+.perfilbutton {
+  text-align: center;
+  justify-content: center;
+}
+
+.alterar {
+  font-size: 14px;
+  background-color: #44aff2;
+  border: none;
+  margin-left: 20px;
+}
+
+.delete {
+  font-size: 14px;
+  margin: 0;
+}
+
 /*article end*/
 
 /*section*/
@@ -138,7 +167,7 @@ a {
     align-items: center;
     justify-content: center;
   }
-  
+
   label {
     font-size: 18px;
   }
