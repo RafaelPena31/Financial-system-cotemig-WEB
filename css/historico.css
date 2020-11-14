@@ -31,7 +31,7 @@ body {
 }
 /*body end*/
 
-/*main*/
+/*main and table*/
 main {
   flex-direction: column;
   display: flex;
@@ -43,8 +43,13 @@ main {
   padding: 10px;
 }
 
-main h3{
-    font-size: 21px;
+main h3 {
+  font-size: 21px;
+  margin-bottom: 35px;
+}
+
+.titulohistorico{
+  margin-top: 70px;
 }
 
 .mytable {
@@ -53,14 +58,60 @@ main h3{
 }
 
 th {
-  background-color: #BDDEF2;
+  background-color: #bddef2;
 }
 
 td {
-  background-color: #BBC9F2;
+  background-color: #bbc9f2;
 }
 
+/*main and table end*/
+
+/*button*/
 .editar {
   margin-bottom: 10px;
 }
 
+.editar:hover {
+  border-color: white;
+}
+
+.deletar {
+  background-color: #1e85da;
+  border-color: #1e85da;
+}
+
+.deletar:hover {
+  background-color: #1e85da;
+  border-color: white;
+}
+/*button end*/
+
+@media (min-width: 600px) {
+  .image {
+    max-width: 50px;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  main h3 {
+    font-size: 33px;
+  }
+
+  .mytable {
+    font-size: 21px;
+  }
+
+  .mytable1 {
+    margin-bottom: 120px;
+  }
+
+  .editar {
+    margin-bottom: 0px;
+    width: 100%;
+    max-width: 50px;
+  }
+
+}
