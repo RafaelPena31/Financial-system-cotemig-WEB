@@ -168,7 +168,7 @@
 					<option value="D">Y</option>
 				</select>
 				<label for="valueRece">Valor de receita</label>
-				<input type="text" class="form-control" id="valueRece" name="valueRece" placeholder="Compra no supermercado" />
+				<input type="text" class="form-control" id="valueRece" name="valueRece" placeholder="Salário" onchange="Teste()" />
 				<div class="container-btn">
 					<button type="button" class="btn btn-light" onclick="CloseForm()">Fechar</button>
 					<button type="submit" class="btn btn-info">Criar</button>
@@ -188,4 +188,12 @@
 		crossorigin="anonymous"
 	></script>
 	<script src="StyleFunctions.js" type="text/javascript"></script>
+	<!-- 	<script type="text/javascript">
+		function Teste() {
+			let valor = document.getElementById('valueRece').value
+			const typeCoin = { style: 'currency', currency: 'brl' }
+			const formatCoin = new Intl.NumberFormat('pt-br', typeCoin)
+			document.getElementById('valueRece').value = formatCoin.format(valor)
+		}
+	</script> -->
 </html>
