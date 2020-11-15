@@ -29,7 +29,7 @@
 		<main>
 			<div>
 				<h3>Login</h3>
-				<form action="index.html" method="post" class="form-group">
+				<form action="index.php" method="post" class="form-group">
 					<label for="email">Email</label>
 					<input type="text" id="email" name="email" class="form-control" placeholder="login@email.com" required />
 					<label for="senha">Senha</label>
@@ -40,7 +40,7 @@
 					<hr />
 					<section>
 						<p>Não tem login?&nbsp;</p>
-						<a href="Screens/RegisterAccount/RegisterAccount.html">Cadastre-se</a>
+						<a href="Screens/RegisterAccount/RegisterAccount.php">Cadastre-se</a>
 					</section>
 				</form>
 			</div>

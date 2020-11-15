@@ -43,13 +43,13 @@
 							<a class="nav-link h5" href="#">Transações</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link h5" href="#">Histórico</a>
+							<a class="nav-link h5" href="../History/History.php">Histórico</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link h5" href="#">Dashboard</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link h5" href="../Profile/Profile.html">Perfil</a>
+							<a class="nav-link h5" href="../Profile/Profile.php">Perfil</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link h5" href="#">Desconectar</a>
@@ -119,7 +119,7 @@
 		</section>
 
 		<div class="form-container">
-			<form action="TransactionPage.html" method="post" id="formCategory" class="form-register">
+			<form action="TransactionPage.php" method="post" id="formCategory" class="form-register">
 				<label for="nameCategory">Nome da categoria</label>
 				<input type="text" class="form-control" id="nameCategory" placeholder="Compra no supermercado" name="nameCategory" />
 				<label for="typeCategory">Tipo da categoria</label>
@@ -145,7 +145,7 @@
 				</div>
 			</form>
 
-			<form action="TransactionPage.html" method="post" id="formDesp" class="form-register">
+			<form action="TransactionPage.php" method="post" id="formDesp" class="form-register">
 				<label for="typeDesp">Nome da despesa</label>
 				<select class="form-control cursor" name="typeDesp">
 					<option hidden>Nomes</option>
@@ -167,7 +167,7 @@
 				</div>
 			</form>
 
-			<form action="TransactionPage.html" method="post" id="formRece" class="form-register">
+			<form action="TransactionPage.php" method="post" id="formRece" class="form-register">
 				<label for="typeRece">Nome da receita</label>
 				<select class="form-control cursor" name="typeRece">
 					<option hidden>Nomes</option>

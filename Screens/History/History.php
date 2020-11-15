@@ -41,7 +41,7 @@
 					<div class="mr-auto"></div>
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link h5" href="../Transaction/TransactionPage.html">Transações</a>
+							<a class="nav-link h5" href="../Transaction/TransactionPage.php">Transações</a>
 						</li>
 						<li class="nav-item active">
 							<a class="nav-link h5" href="#">Histórico</a>
@@ -50,7 +50,7 @@
 							<a class="nav-link h5" href="#">Dashboard</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link h5" href="#">Perfil</a>
+							<a class="nav-link h5" href="../Profile/Profile.php">Perfil</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link h5" href="#">Desconectar</a>

@@ -63,7 +63,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="Perfil.html" method="POST">
+						<form action="Perfil.php" method="POST">
 							<label for="nameInput">Digite seu nome</label>
 							<input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="Seu nome" />
 							<button type="submit" class="btn btn-info btn-modal-submit">Alterar</button>
@@ -96,7 +96,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="Perfil.html" method="POST">
+						<form action="Perfil.php" method="POST">
 							<label for="emailInput">Digite seu email</label>
 							<input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="finance@exemplo.com" />
 							<button type="submit" class="btn btn-info btn-modal-submit">Alterar</button>
@@ -129,7 +129,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="Perfil.html" method="POST">
+						<form action="Perfil.php" method="POST">
 							<label for="passInput">Digite sua senha</label>
 							<input type="password" class="form-control" id="passInput" name="passInput" placeholder="*******" />
 							<button type="submit" class="btn btn-info btn-modal-submit">Alterar</button>
@@ -162,7 +162,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="Perfil.html" method="POST">
+						<form action="Perfil.php" method="POST">
 							<label for="addressInput">Digite seu endereço</label>
 							<textarea class="form-control" id="addressInput" name="addressInput"></textarea>
 							<button type="submit" class="btn btn-info btn-modal-submit">Alterar</button>
@@ -195,7 +195,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="Perfil.html" method="POST">
+						<form action="Perfil.php" method="POST">
 							<label for="phoneInput">Digite seu telefone</label>
 							<input type="tel" class="form-control" id="phoneInput" name="phoneInput" placeholder="(xx) xxxxx-xxxx" />
 							<button type="submit" class="btn btn-info btn-modal-submit">Alterar</button>
@@ -260,10 +260,10 @@
 					<div class="mr-auto"></div>
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link h5" href="../Transaction/TransactionPage.html">Transações</a>
+							<a class="nav-link h5" href="../Transaction/TransactionPage.php">Transações</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link h5" href="#">Histórico</a>
+							<a class="nav-link h5" href="../History/History.php">Histórico</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link h5" href="#">Dashboard</a>

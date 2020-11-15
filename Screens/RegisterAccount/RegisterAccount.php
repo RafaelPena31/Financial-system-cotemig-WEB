@@ -29,7 +29,7 @@
 		<main>
 			<div>
 				<h3>Cadastre-se</h3>
-				<form action="" method="post" class="form-group">
+				<form action="RegisterAccount.php" method="post" class="form-group">
 					<label for="nome">Nome</label>
 					<input type="text" id="nome" name="nome" class="form-control" placeholder="Seu nome" required />
 					<label for="sexo">Sexo</label>
