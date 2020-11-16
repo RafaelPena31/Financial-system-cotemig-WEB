@@ -1,5 +1,14 @@
 <?php
 session_start();
+if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
+    if(isset($_GET['desconnect']) && !empty($_GET['desconnect'])) {
+        $_SESSION = array();
+        session_destroy();
+        header('location: ../../index.php');
+    }
+} else {
+    header('location: ../../index.php');
+}
 
 ?>
 
@@ -57,7 +66,7 @@ session_start();
 							<a class="nav-link h5" href="../Profile/Profile.php">Perfil</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link h5" href="#">Desconectar</a>
+							<a class="nav-link h5" href="TransactionPage.php?desconnect=true">Desconectar</a>
 						</li>
 					</ul>
 				</div>
