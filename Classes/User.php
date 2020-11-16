@@ -91,7 +91,7 @@ class User
                 if($sql->rowCount() > 0) {
                     $result = $sql->fetchAll(PDO::FETCH_CLASS);
                     foreach ($result as $idResult) :
-                    $_SESSION["userToken"] = intval($idResult);
+                    $_SESSION["userToken"] = intval($idResult->id);
                     endforeach;
                     if(isset($_POST["createUser"])) {
                         header("location: ../Transaction/TransactionPage.php");
@@ -117,7 +117,7 @@ class User
                 $this->name = $_POST['nameInput'];
                 $bd = new Conexao();
                 $con = $bd->conectar();
-                $sql = $con->prepare('update User set nome = ? where id = ?');
+                $sql = $con->prepare('update User set name = ? where id = ?');
                 $sql->execute(array(
                     $this->name,
                     $_SESSION['userToken']
@@ -126,6 +126,8 @@ class User
                 if ($sql->rowCount() > 0) {
                     echo '<script type="text/javascript">alert("Dados atualizados com sucesso!");</script>';
                     header('location: Profile.php');
+                } else {
+                    echo 'foi mas n foi';
                 }
 
             } elseif (isset($_POST['emailInput']) && !empty($_POST['emailInput'])) {
@@ -211,6 +213,28 @@ class User
 
         } catch (PDOException $msg) {
             echo "<script> alert('Não foi possível listar o seus dados: {$msg->getMessage()}'); </script>";
+        }
+    }
+
+    public function DeleteUserData() {
+        try {
+            $bd = new Conexao();
+            $con = $bd->conectar();
+            $sql = $con->prepare('delete from User where id = ?');
+            $sql->execute(array(
+                $_SESSION['userToken']
+            ));
+
+            if ($sql->rowCount() > 0) {
+                $_SESSION = array();
+                session_destroy();
+                echo '<script type="text/javascript">alert("Conta deletada com sucesso!");</script>';
+                header('location: ../../index.php');
+            } else {
+                echo 'n foi';
+            }
+        } catch (PDOException $msg) {
+            echo "<script> alert('Não foi possível deletar a sua conta: {$msg->getMessage()}'); </script>";
         }
     }
 
