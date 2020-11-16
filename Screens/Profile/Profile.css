@@ -1,3 +1,7 @@
+.delete {
+	width: 100%!important;
+}
+
 .money-view {
 	padding-bottom: 0.5rem;
 	flex-direction: column;
@@ -64,3 +68,5 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+
