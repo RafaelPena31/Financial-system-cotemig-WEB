@@ -1,3 +1,16 @@
+<?php
+header("Content-type:text/html; charset=utf8");
+
+require_once "../../Classes/User.php";
+
+$User = new User();
+if(isset($_POST["createUser"])) {
+    $User->VerifyUserToCreate();
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -47,18 +60,18 @@
 					<label for="telefone">Celular</label>
 					<input
 						type="text"
-						id="phone"
+						id="telefone"
 						name="telefone"
 						class="form-control"
 						placeholder="(xx) xxxxx-xxxx"
 						required
-						oninput="PhoneMask('phone')"
+						oninput="PhoneMask('telefone')"
 					/>
 					<label for="senha">Senha</label>
 					<input type="password" id="senha" name="senha" class="form-control" placeholder="*******" required />
 					<article>
-						<a href="../../index.html" class="btn btn-outline-secondary voltar">Voltar</a>
-						<button type="submit" class="btn btn-success criar">Criar</button>
+						<a href="../../index.php" class="btn btn-outline-secondary voltar">Voltar</a>
+						<button type="submit" class="btn btn-success criar" name="createUser">Criar</button>
 					</article>
 				</form>
 			</div>
