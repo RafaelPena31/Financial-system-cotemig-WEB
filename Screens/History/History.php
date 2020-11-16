@@ -96,7 +96,7 @@
 		<div id="main-table-jan">
 			<main class="container">
 				<div class="title-table">
-					<h3>Receita</h3>
+					<h3>Receitas</h3>
 				</div>
 
 				<nav class="month-menu">
