@@ -25,12 +25,15 @@ foreign key (User_id) references User(id)
 create table Registration(
 id int unsigned auto_increment not null primary key,
 value double(9,2) unsigned not null,
+data date not null,
 User_id int unsigned not null,
 Category_id int unsigned not null,
 foreign key (Category_id) references Category(id),
 foreign key (User_id) references User(id)
 )engine=innodb;
 
-
+-- select * from user;
+-- delete from User where id = 5;
+-- update User set nome = 'rafael' where id = 1;
 
 
