@@ -75,23 +75,6 @@ class User
         }
     }
 
-    public function ListingUserData($userToken) {
-        try {
-            $bd = new Conexao();
-            $con = $bd->conectar();
-            $sql = $con->prepare("select * from User where id = ?");
-            $sql->execute(array(
-                $userToken
-            ));
-            if($sql->rowCount() > 0) {
-                return $result = $sql->fetchAll(PDO::FETCH_CLASS);
-            }
-
-        } catch (PDOException $msg) {
-            echo "<script> alert('Não foi possível listar o seus dados: {$msg->getMessage()}'); </script>";
-        }
-    }
-
     public function Authenticator() {
         try {
             if(isset($_POST["email"]) && !empty($_POST["email"]) && isset($_POST["senha"]) && !empty("senha")) {
@@ -107,7 +90,9 @@ class User
                 ));
                 if($sql->rowCount() > 0) {
                     $result = $sql->fetchAll(PDO::FETCH_CLASS);
-                    $_SESSION["userToken"] = $result;
+                    foreach ($result as $idResult) :
+                    $_SESSION["userToken"] = intval($idResult);
+                    endforeach;
                     if(isset($_POST["createUser"])) {
                         header("location: ../Transaction/TransactionPage.php");
                     } elseif (isset($_POST["logUser"])) {
@@ -124,6 +109,111 @@ class User
             echo "<script> alert('Não foi possível realizar sua autenticação: {$msg->getMessage()}');</script>";
         }
     }
+
+    public function UpdateUserData() {
+        try {
+
+            if(isset($_POST['nameInput']) && !empty($_POST['nameInput'])) {
+                $this->name = $_POST['nameInput'];
+                $bd = new Conexao();
+                $con = $bd->conectar();
+                $sql = $con->prepare('update User set nome = ? where id = ?');
+                $sql->execute(array(
+                    $this->name,
+                    $_SESSION['userToken']
+                ));
+
+                if ($sql->rowCount() > 0) {
+                    echo '<script type="text/javascript">alert("Dados atualizados com sucesso!");</script>';
+                    header('location: Profile.php');
+                }
+
+            } elseif (isset($_POST['emailInput']) && !empty($_POST['emailInput'])) {
+                $this->email = $_POST['emailInput'];
+                $bd = new Conexao();
+                $con = $bd->conectar();
+                $sql = $con->prepare('update User set email = ? where id = ?');
+                $sql->execute(array(
+                    $this->email,
+                    $_SESSION['userToken']
+                ));
+
+                if($sql->rowCount() > 0) {
+                    echo '<script type="text/javascript">alert("Dados atualizados com sucesso!");</script>';
+                    header('location: Profile.php');
+                }
+
+            } elseif (isset($_POST['passInput']) && !empty($_POST['passInput'])) {
+                $this->password = $_POST['passInput'];
+                $bd = new Conexao();
+                $con = $bd->conectar();
+                $sql = $con->prepare('update User set password = ? where id = ?');
+                $sql->execute(array(
+                    $this->password,
+                    $_SESSION['userToken']
+                ));
+
+                if ($sql->rowCount() > 0) {
+                    echo '<script type="text/javascript">alert("Dados atualizados com sucesso!");</script>';
+                    header('location: Profile.php');
+                }
+
+            } elseif (isset($_POST['addressInput']) && !empty($_POST['addressInput'])) {
+                $this->address = $_POST['addressInput'];
+                $bd = new Conexao();
+                $con = $bd->conectar();
+                $sql = $con->prepare('update User set address = ? where id = ?');
+                $sql->execute(array(
+                    $this->address,
+                    $_SESSION['userToken']
+                ));
+
+                if ($sql->rowCount() > 0) {
+                    echo '<script type="text/javascript">alert("Dados atualizados com sucesso!");</script>';
+                    header('location: Profile.php');
+                }
+
+            } elseif (isset($_POST['phoneInput']) && !empty($_POST['phoneInput'])) {
+                $this->phone = $_POST['phoneInput'];
+                $bd = new Conexao();
+                $con = $bd->conectar();
+                $sql = $con->prepare('update User set phone = ? where id = ?');
+                $sql->execute(array(
+                    $this->phone,
+                    $_SESSION['userToken']
+                ));
+
+                if ($sql->rowCount() > 0) {
+                    echo '<script type="text/javascript">alert("Dados atualizados com sucesso!");</script>';
+                    header('location: Profile.php');
+                }
+
+            } else {
+                echo '<script type="text/javascript">alert("Preencha os dados necessários para prosseguir!");</script>';
+            }
+
+        } catch (PDOException $msg) {
+            echo "<script> alert('Não foi possível realizar sua alteração: {$msg->getMessage()}');</script>";
+        }
+    }
+
+    public function ListingUserData() {
+        try {
+            $bd = new Conexao();
+            $con = $bd->conectar();
+            $sql = $con->prepare("select * from User where id = ?");
+            $sql->execute(array(
+                $_SESSION['userToken']
+            ));
+            if($sql->rowCount() > 0) {
+                return $result = $sql->fetchAll(PDO::FETCH_CLASS);
+            }
+
+        } catch (PDOException $msg) {
+            echo "<script> alert('Não foi possível listar o seus dados: {$msg->getMessage()}'); </script>";
+        }
+    }
+
 }
 
 ?>
