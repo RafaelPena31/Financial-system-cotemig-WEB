@@ -1,11 +1,39 @@
 <?php
-session_start();
+require_once "../../Classes/User.php";
+$User = new User();
+
 if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
+
+    $UserListData = $User->ListingUserData();
+
+    $name = '';
+    $genre = '';
+    $email = '';
+    $address = '';
+    $phone = '';
+    $pass = '';
+
+    foreach ($UserListData as $UserData) :
+        $name = $UserData->name;
+        $genre = $UserData->genre;
+        $email = $UserData->email;
+        $address = $UserData->address;
+        $phone = $UserData->phone;
+        $pass = $UserData->password;
+        endforeach;
+
     if(isset($_GET['desconnect']) && !empty($_GET['desconnect'])) {
         $_SESSION = array();
         session_destroy();
         header('location: ../../index.php');
     }
+
+    if ( (isset($_POST['nameInput']) && !empty($_POST['nameInput'])) || (isset($_POST['emailInput']) && !empty($_POST['emailInput'])) ||
+        (isset($_POST['passInput']) && !empty($_POST['passInput'])) || (isset($_POST['addressInput']) && !empty($_POST['addressInput'])) ||
+        (isset($_POST['phoneInput']) && !empty($_POST['phoneInput'])) ) {
+            $User->UpdateUserData();
+    }
+
 } else {
     header('location: ../../index.php');
 }
@@ -48,7 +76,39 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">...</div>
+					<div class="modal-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">Nome: <?php echo $name; ?></li>
+                            <li class="list-group-item">Gênero: <?php
+                                if ($genre === 'M') {
+                                    echo 'Masculino';
+                                } elseif ($genre === 'F') {
+                                    echo 'Feminino';
+                                } elseif ($genre === 'O') {
+                                    echo  'Outro';
+                                } elseif ($genre === 'N') {
+                                    echo  'Não declarado';
+                                }
+                            ?>
+                            </li>
+                            <li class="list-group-item">E-mail: <?php echo $email; ?></li>
+                            <li class="list-group-item">Endereço: <?php echo $address; ?></li>
+                            <li class="list-group-item">Telefone: <?php echo $phone; ?></li>
+                            <li class="list-group-item pass">
+                                <p>
+                                    Senha:
+                                    <span id="passString"> *******</span>
+                                    <span id="passStringOpen" style="display: none"> <?php echo $pass; ?></span>
+                                </p>
+                                <button type="button" class="btn btn-outline-info nVisibleBtn" onclick="VisiblePass('visibleBtn', 'nVisibleBtn')">
+                                    <i class="fas fa-eye-slash receita"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline-info visibleBtn" onclick="VisiblePass('nVisibleBtn', 'visibleBtn')" style="display: none">
+                                    <i class="fas fa-eye receita"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					</div>
@@ -319,7 +379,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					</a>
 				</div>
 				<div class="name">
-					<h1 class="title-name">Bem vindo(a): Vitória</h1>
+					<h1 class="title-name">Bem vindo(a): <?php echo $name; ?></h1>
 				</div>
 			</section>
 		</nav>
@@ -371,4 +431,5 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 		integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
 		crossorigin="anonymous"
 	></script>
+    <script src="Profile.js" type="text/javascript"></script>
 </html>

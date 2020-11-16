@@ -59,3 +59,8 @@
 .btn-modal-submit {
 	margin-top: 1rem;
 }
+
+.pass {
+	display: flex;
+	justify-content: space-between;
+}
