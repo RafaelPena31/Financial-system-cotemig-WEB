@@ -20,12 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c957f5d-8cdc-405e-a4ad-067f5e30605a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Screens/History/History.html" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/History/History.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screens/Profile/Profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/Profile/Profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screens/RegisterAccount/RegisterAccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/RegisterAccount/RegisterAccount.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screens/Transaction/StyleFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/Transaction/StyleFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screens/Transaction/TransactionPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/Transaction/TransactionPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/Conexao.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screens/History/History.php" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/History/History.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screens/RegisterAccount/RegisterAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/RegisterAccount/RegisterAccount.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screens/Transaction/TransactionPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/Transaction/TransactionPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +59,9 @@
       <option name="presentableId" value="Default" />
       <updated>1605411728779</updated>
       <workItem from="1605411729940" duration="276000" />
+      <workItem from="1605412406652" duration="5406000" />
+      <workItem from="1605480291371" duration="3787000" />
+      <workItem from="1605485749102" duration="7088000" />
     </task>
     <servers />
   </component>
@@ -74,5 +78,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="682" y="262" key="NewPhpClassDialog" timestamp="1605413071507">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="682" y="262" key="NewPhpClassDialog/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1605413071507" />
+    <state x="498" y="188" width="672" height="678" key="search.everywhere.popup" timestamp="1605482554527">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="498" y="188" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1605482554527" />
+    <state x="623" y="235" key="search.everywhere.popup/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1605412629878" />
   </component>
 </project>
