@@ -1,3 +1,14 @@
+<?php
+header("Content-type:text/html; charset=utf8");
+
+require_once "Classes/User.php";
+$User = new User();
+if(isset($_POST["logUser"])) {
+    $User->Authenticator();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -35,7 +46,7 @@
 					<label for="senha">Senha</label>
 					<input type="password" id="senha" name="senha" class="form-control" placeholder="*******" required />
 					<article>
-						<button type="submit" class="btn btn-primary login">Entrar</button>
+						<button type="submit" class="btn btn-primary login" name="logUser">Entrar</button>
 					</article>
 					<hr />
 					<section>
