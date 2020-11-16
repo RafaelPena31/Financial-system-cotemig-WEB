@@ -5,7 +5,6 @@ $User = new User();
 if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 
     $UserListData = $User->ListingUserData();
-
     $name = '';
     $genre = '';
     $email = '';
@@ -32,6 +31,10 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
         (isset($_POST['passInput']) && !empty($_POST['passInput'])) || (isset($_POST['addressInput']) && !empty($_POST['addressInput'])) ||
         (isset($_POST['phoneInput']) && !empty($_POST['phoneInput'])) ) {
             $User->UpdateUserData();
+    }
+
+    if(isset($_GET['deleteConfirm']) && !empty($_GET['deleteConfirm'])) {
+        $User->DeleteUserData();
     }
 
 } else {
@@ -136,7 +139,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="Perfil.php" method="POST">
+						<form action="Profile.php" method="POST">
 							<label for="nameInput">Digite seu nome</label>
 							<input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="Seu nome" />
 							<button type="submit" class="btn btn-info btn-modal-submit">Alterar</button>
@@ -169,7 +172,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="Perfil.php" method="POST">
+						<form action="Profile.php" method="POST">
 							<label for="emailInput">Digite seu email</label>
 							<input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="finance@exemplo.com" />
 							<button type="submit" class="btn btn-info btn-modal-submit">Alterar</button>
@@ -202,7 +205,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="Perfil.php" method="POST">
+						<form action="Profile.php" method="POST">
 							<label for="passInput">Digite sua senha</label>
 							<input type="password" class="form-control" id="passInput" name="passInput" placeholder="*******" />
 							<button type="submit" class="btn btn-info btn-modal-submit">Alterar</button>
@@ -235,7 +238,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="Perfil.php" method="POST">
+						<form action="Profile.php" method="POST">
 							<label for="addressInput">Digite seu endereço</label>
 							<textarea class="form-control" id="addressInput" name="addressInput"></textarea>
 							<button type="submit" class="btn btn-info btn-modal-submit">Alterar</button>
@@ -268,9 +271,9 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="Perfil.php" method="POST">
+						<form action="Profile.php" method="POST">
 							<label for="phoneInput">Digite seu telefone</label>
-							<input type="tel" class="form-control" id="phoneInput" name="phoneInput" placeholder="(xx) xxxxx-xxxx" />
+							<input type="tel" class="form-control" id="phoneInput" name="phoneInput" placeholder="(xx) xxxxx-xxxx" oninput="PhoneMask('phoneInput')" />
 							<button type="submit" class="btn btn-info btn-modal-submit">Alterar</button>
 						</form>
 					</div>
@@ -300,7 +303,10 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">...</div>
+					<div class="modal-body">
+                        <p>Você tem certeza que gostaria de excluir sua conta? A exclusão é irreversível.</p>
+                        <a href="Profile.php?deleteConfirm=true" class="btn btn-danger" style="width: 100%">Deletar minha conta</a>
+                    </div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					</div>
@@ -432,4 +438,5 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 		crossorigin="anonymous"
 	></script>
     <script src="Profile.js" type="text/javascript"></script>
+    <script src="../../JS/Masks.js" type="text/javascript"></script>
 </html>
