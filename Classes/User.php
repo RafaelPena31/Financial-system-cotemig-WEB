@@ -230,8 +230,6 @@ class User
                 session_destroy();
                 echo '<script type="text/javascript">alert("Conta deletada com sucesso!");</script>';
                 header('location: ../../index.php');
-            } else {
-                echo 'n foi';
             }
         } catch (PDOException $msg) {
             echo "<script> alert('Não foi possível deletar a sua conta: {$msg->getMessage()}'); </script>";

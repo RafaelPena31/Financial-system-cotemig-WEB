@@ -29,6 +29,46 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 		<link rel="stylesheet" href="History.css" />
 	</head>
 	<body>
+	
+	<!-- Modal Editar -->
+	<div
+			class="modal fade"
+			id="editar"
+			data-backdrop="static"
+			data-keyboard="false"
+			tabindex="-1"
+			aria-labelledby="staticBackdropLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form action="History.php" method="POST">
+							<label class="LabelModal" for="ClassInput">Class</label>
+							<input type="ClassEditar" class="form-control" id="ClassInput" name="ClassEditart"/><hr>
+							<label class="LabelModal" for="TipoInput">Tipo</label>
+							<input type="TipoEditar" class="form-control" id="TipoInput" name="TipoEditart"/><hr>
+							<label class="LabelModal" for="ValorInput">Valor</label>
+							<input type="ValorEditar" class="form-control" id="ValorInput" name="ValorEditart"/><hr>
+							<label class="LabelModal" for="DataInput">Data</label>
+							<input type="DataEditar" class="form-control" id="DataInput" name="DataEditart"/>
+							<button type="submit" class="btn btn-info btn-modal-submit">Alterar</button>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Modal Editar -->
+
 		<!-- Start nav -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 			<section class="nav-content">
@@ -149,8 +189,8 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-danger btn-table" data-toggle="modal" data-target="#deletar"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
 						<tr class="trRece">
@@ -160,8 +200,8 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-danger btn-table" data-dismiss="modal" data-toggle="#deletar" ><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
 						<tr class="trRece">
@@ -171,8 +211,8 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-danger btn-table" data-dismiss="modal" data-toggle="#deletar" ><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
 					</table>
@@ -219,7 +259,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -230,7 +270,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -241,8 +281,8 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
+							<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
+							<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
 					</table>
@@ -297,7 +337,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+		  						<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -308,7 +348,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -319,7 +359,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -367,7 +407,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -378,7 +418,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -389,7 +429,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+							<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -445,7 +485,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -456,7 +496,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -467,7 +507,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -515,7 +555,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+							<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -526,7 +566,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+							<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -537,7 +577,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+							<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -593,7 +633,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -604,7 +644,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -615,7 +655,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -663,7 +703,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -674,7 +714,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+							    <button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -685,7 +725,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -741,7 +781,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -752,7 +792,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -763,7 +803,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -811,7 +851,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -822,7 +862,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -833,7 +873,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -889,7 +929,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -900,7 +940,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -911,7 +951,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -959,7 +999,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -970,7 +1010,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -981,7 +1021,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1048,7 +1088,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1059,7 +1099,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1107,7 +1147,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1118,7 +1158,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1129,7 +1169,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1185,7 +1225,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1196,7 +1236,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1207,7 +1247,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1255,7 +1295,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1266,7 +1306,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1277,7 +1317,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1333,7 +1373,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1344,7 +1384,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1355,7 +1395,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1403,7 +1443,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1414,7 +1454,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1425,7 +1465,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1481,7 +1521,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1492,7 +1532,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1503,7 +1543,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1551,7 +1591,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1562,7 +1602,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1573,7 +1613,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1629,7 +1669,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1640,7 +1680,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1651,7 +1691,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1699,7 +1739,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1710,7 +1750,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1721,7 +1761,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1777,7 +1817,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1788,7 +1828,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1799,7 +1839,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1847,7 +1887,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1858,7 +1898,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
@@ -1869,7 +1909,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>R$ 550,00</td>
 							<td>14/11/2020</td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
