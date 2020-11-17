@@ -163,7 +163,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 				<label for="typeDesp">Nome da despesa</label>
 				<select class="form-control cursor" name="typeDesp">
 					<option hidden>Nomes</option>
-					<option value="R">X</option>
+					<option value="5">Compra de supermercado</option>
 					<option value="D">Y</option>
 				</select>
 				<label for="valueDesp">Valor de despesa</label>

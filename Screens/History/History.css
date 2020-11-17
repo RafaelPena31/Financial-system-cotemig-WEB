@@ -92,50 +92,50 @@ label {
 
 /* Month Config */
 
-.main-table-jan {
+#main-table-jan {
 	display: block;
 }
 
-.main-table-fev {
+#main-table-fev {
 	display: none;
 }
 
-.main-table-mar {
+#main-table-mar {
 	display: none;
 }
 
-.main-table-abr {
+#main-table-abr {
 	display: none;
 }
 
-.main-table-mai {
+#main-table-mai {
 	display: none;
 }
 
-.main-table-jun {
+#main-table-jun {
 	display: none;
 }
 
-.main-table-jul {
+#main-table-jul {
 	display: none;
 }
 
-.main-table-ago {
+#main-table-ago {
 	display: none;
 }
 
-.main-table-set {
+#main-table-set {
 	display: none;
 }
 
-.main-table-out {
+#main-table-out {
 	display: none;
 }
 
-.main-table-nov {
+#main-table-nov {
 	display: none;
 }
 
-.main-table-dez {
+#main-table-dez {
 	display: none;
 }
