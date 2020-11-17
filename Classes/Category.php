@@ -60,7 +60,7 @@ class Category
         }
     }
 
-    public function UpdateCa(egory){
+    public function UpdateCategory(){
         try {
             if (isset($_POST['editar'])){
                 $this->id = $_GET["categoryId"];
@@ -71,11 +71,12 @@ class Category
                 $bd = new Conexao();
 
                 $con = $bd->conectar();
-                $sql = $con->prepare("update alunos set name = ?,type = ?,class = ?,where id = ?");
+                $sql = $con->prepare("update alunos set name = ?,type = ?,class = ? where id = ?");
                 $sql->execute(array(
                     $this->name,
                     $this->type,
-                    $this->class
+                    $this->class,
+                    $_GET["confirmUpdate"]
                 ));
                 if ($sql->rowCount() > 0) {
                     header("location: TransactionPage.php");
@@ -94,7 +95,7 @@ class Category
             $con = $bd->conectar();
             $sql = $con->prepare('delete from Category where id = ?');
             $sql->execute(array(
-                $_GET["categoryId"]
+                $_GET["confirmDelete"]
             ));
 
             if ($sql->rowCount() > 0) {

@@ -1,15 +1,36 @@
 <?php
-session_start();
+
+require_once "../../Classes/Category.php";
+$Categoria = new Category();
+
 if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
+	$ListingRecipe = $Category->$ListingCategory("R");
+	$ListingExpense = $Category->$ListingCategory("D");
     if(isset($_GET['desconnect']) && !empty($_GET['desconnect'])) {
         $_SESSION = array();
         session_destroy();
         header('location: ../../index.php');
-    }
+	}
+	
+	if(isset($_POST['createCategory'])){
+		$Categoria->CreateCategory();
+	}
+
+	if(isset($_GET['confirmUpdate'])){
+		$Categoria->CreateCategory();
+	}
+
+	if(isset($_GET['confirmDelete'])){
+		$Categoria->CreateCategory();
+	}
+
 } else {
     header('location: ../../index.php');
 }
 
+if(isset($_GET["confirmDelete"])) {
+    $Categoria->excluir($_GET["confirmDelete"]);
+}
 ?>
 
 <!DOCTYPE html>
@@ -155,7 +176,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 				</select>
 				<div class="container-btn">
 					<button type="button" class="btn btn-light" onclick="CloseForm()">Fechar</button>
-					<button type="submit" class="btn btn-info">Criar</button>
+					<button type="submit" name="createCategory" class="btn btn-info">Criar</button>
 				</div>
 			</form>
 
@@ -205,36 +226,24 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<th>Tipo</th>
 							<th></th>
 						</tr>
+						<?php if ($ListingCategory) :
+							foreach ($ListingRecipe as $categoria) : ?>
 						<tr class="trCate">
-							<td>1</td>
-							<td>Salário</td>
-							<td>Trabalho</td>
-							<td>Receita</td>
+							<td><?php echo $categoria->id ?></td>
+							<td><?php echo $categoria->name ?></td>
+							<td><?php echo $categoria->class ?></td>
+							<td><?php echo $categoria->type ?></td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
+								<a href="TransactionPage.php?confirmUpdate=<?php echo $categoria->id ?>" class="btn btn-info btn-table"><i class="fas fa-edit"></i></a>
+								<a href="TransactionPage.php?confirmDelete=<?php echo $categoria->id ?>" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></a>
 							</td>
 						</tr>
-						<tr class="trCate">
-							<td>2</td>
-							<td>Salário</td>
-							<td>Trabalho</td>
-							<td>Receita</td>
-							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
-							</td>
-						</tr>
-						<tr class="trCate">
-							<td>3</td>
-							<td>Salário</td>
-							<td>Trabalho</td>
-							<td>Receita</td>
-							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
-							</td>
-						</tr>
+						<? php  endforeach ; ?>
+						<?php else : ?>
+						<tr>
+          					<td colspan="4">Nenhuma categoria cadastrada!!</td>
+        				</tr>
+        				<?php endif; ?>
 					</table>
 				</div>
 
@@ -247,36 +256,24 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<th>Tipo</th>
 							<th></th>
 						</tr>
+						<?php if ($ListingCategory) :
+							foreach ($ListingExpense as $categoria) : ?>
 						<tr class="trCate">
-							<td>1</td>
-							<td>Compra no supermercado</td>
-							<td>Alimentação</td>
-							<td>Despesa</td>
+							<td><?php echo $categoria->id ?></td>
+							<td><?php echo $categoria->name ?></td>
+							<td><?php echo $categoria->class ?></td>
+							<td><?php echo $categoria->type ?></td>
 							<td>
 								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
-						<tr class="trCate">
-							<td>2</td>
-							<td>Compra no supermercado</td>
-							<td>Alimentação</td>
-							<td>Despesa</td>
-							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
-							</td>
-						</tr>
-						<tr class="trCate">
-							<td>3</td>
-							<td>Compra no supermercado</td>
-							<td>Alimentação</td>
-							<td>Despesa</td>
-							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
-							</td>
-						</tr>
+						<? php  endforeach ; ?>
+						<?php else : ?>
+						<tr>
+          					<td colspan="4">Nenhuma categoria cadastrada!!</td>
+        				</tr>
+        				<?php endif; ?>			
 					</table>
 				</div>
 
