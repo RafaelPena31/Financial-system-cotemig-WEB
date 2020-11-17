@@ -207,9 +207,51 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 						</tr>
 						<tr class="trCate">
 							<td>1</td>
+							<td>Salário</td>
+							<td>Trabalho</td>
+							<td>Receita</td>
+							<td>
+								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
+							</td>
+						</tr>
+						<tr class="trCate">
+							<td>2</td>
+							<td>Salário</td>
+							<td>Trabalho</td>
+							<td>Receita</td>
+							<td>
+								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
+							</td>
+						</tr>
+						<tr class="trCate">
+							<td>3</td>
+							<td>Salário</td>
+							<td>Trabalho</td>
+							<td>Receita</td>
+							<td>
+								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
+								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="container-table" id="table-category2">
+					<table>
+						<tr class="trCate">
+							<th>ID</th>
+							<th>Nome</th>
+							<th>Classe</th>
+							<th>Tipo</th>
+							<th></th>
+						</tr>
+						<tr class="trCate">
+							<td>1</td>
 							<td>Compra no supermercado</td>
 							<td>Alimentação</td>
-							<td>Receita</td>
+							<td>Despesa</td>
 							<td>
 								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
@@ -219,7 +261,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>2</td>
 							<td>Compra no supermercado</td>
 							<td>Alimentação</td>
-							<td>Receita</td>
+							<td>Despesa</td>
 							<td>
 								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
@@ -229,7 +271,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td>3</td>
 							<td>Compra no supermercado</td>
 							<td>Alimentação</td>
-							<td>Receita</td>
+							<td>Despesa</td>
 							<td>
 								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
