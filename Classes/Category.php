@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 require_once "Conexao.php";
 
 class Category
