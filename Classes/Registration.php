@@ -37,7 +37,7 @@ class Registration
                       echo "<script> alert('Despesa registrado com sucesso.'); </script>";
                       header('location: TransactionPage.php');
                     } else {
-                      echo "<script> alert('Não foi possível registrar sua despesa. {$_POST['dateRegistration']}'); </script>";
+                      echo "<script> alert('Não foi possível registrar sua despesa.'); </script>";
                     }
 
                     break;
