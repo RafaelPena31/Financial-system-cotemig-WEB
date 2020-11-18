@@ -1,6 +1,12 @@
 <?php
+
+session_start();
+
 require_once "../../Classes/Category.php";
+require_once "../../Classes/Registration.php";
+
 $Category = new Category();
+$Registration = new Registration();
 
 if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 
@@ -24,6 +30,15 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 	if(isset($_GET['confirmDelete'])){
 		$Category->DeleteCategory();
 	}
+
+	if(isset($_POST['btnExpense'])){
+		$Registration->CreateRegistration('D');
+	}
+
+	if(isset($_POST['btnReceive'])){
+		$Registration->CreateRegistration('R');
+	}
+
 
 } else {
     header('location: ../../index.php');
@@ -178,8 +193,8 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 			</form>
 
 			<form action="TransactionPage.php" method="post" id="formDesp" class="form-register">
-				<label for="typeDesp">Nome da despesa</label>
-				<select class="form-control cursor" name="typeDesp">
+				<label for="typeRegistration">Nome da despesa</label>
+				<select class="form-control cursor" name="typeRegistration">
 				<option hidden>Nomes</option>
 				<?php if ($ListingExpense) :
 							foreach ($ListingExpense as $categoria) : ?>
@@ -187,35 +202,39 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 						<?php  endforeach; ?>
 					<?php endif; ?>
 				</select>
+				<label for="data">Escolha a data</label>
+				<input type="date" class="form-control data" name="dateRegistration">
 				<label for="valueDesp">Valor de despesa</label>
 				<input
 					type="text"
 					class="form-control"
 					id="valueDesp"
-					name="valueDesp"
+					name="valueRegistration"
 					onchange="MoneyMask('valueDesp')"
 				/>
 				<div class="container-btn">
 					<button type="button" class="btn btn-light" onclick="CloseForm()">Fechar</button>
-					<button type="submit" class="btn btn-info">Criar</button>
+					<button type="submit" class="btn btn-info" name="btnExpense">Criar</button>
 				</div>
 			</form>
 
 			<form action="TransactionPage.php" method="post" id="formRece" class="form-register">
-				<label for="typeRece">Nome da receita</label>
-				<select class="form-control cursor" name="typeRece">
+				<label for="typeRegistration">Nome da receita</label>
+				<select class="form-control cursor" name="typeRegistration">
 					<option hidden>Nomes</option>
 					<?php if ($ListingRecipe) :
-							foreach ($ListingRecipe as $categoria) : ?>
-					<option value="<?php echo $categoria->id ?>"><?php echo $categoria->name ?></option>
+						foreach ($ListingRecipe as $categoria) : ?>
+							<option value="<?php echo $categoria->id ?>"><?php echo $categoria->name ?></option>
 						<?php  endforeach; ?>
 					<?php endif; ?>
 				</select>
+				<label for="data">Escolha a data</label>
+				<input type="date" class="form-control data" name="dateRegistration">
 				<label for="valueRece">Valor de receita</label>
-				<input type="text" class="form-control" id="valueRece" name="valueRece" onchange="MoneyMask('valueRece')" />
+				<input type="text" class="form-control" id="valueRece" name="valueRegistration" onchange="MoneyMask('valueRece')" />
 				<div class="container-btn">
 					<button type="button" class="btn btn-light" onclick="CloseForm()">Fechar</button>
-					<button type="submit" class="btn btn-info">Criar</button>
+					<button type="submit" class="btn btn-info" name="btnReceive">Criar</button>
 				</div>
 			</form>
 
@@ -243,7 +262,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 						<?php  endforeach ; ?>
 						<?php else : ?>
 						<tr>
-          					<td colspan="4">Nenhuma categoria de receita cadastrada!!</td>
+          					<td colspan="4" id="blockedReceive">Nenhuma categoria de receita cadastrada!!</td>
         				</tr>
         				<?php endif; ?>
 					</table>
@@ -273,7 +292,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 						<?php  endforeach; ?>
 						<?php else : ?>
 						<tr>
-          					<td colspan="4">Nenhuma categoria de despesa cadastrada!!</td>
+          					<td colspan="4" id="blockedExpense">Nenhuma categoria de despesa cadastrada!!</td>
         				</tr>
         				<?php endif; ?>			
 					</table>
