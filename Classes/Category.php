@@ -21,7 +21,7 @@ class Category
 
                 $bd = new Conexao();
                 $con = $bd->conectar();
-                $sql = $con->prepare("insert into User(id,name,type,class,User_id) values(null,?,?,?,?)");
+                $sql = $con->prepare("insert into Category(id,name,type,class,User_id) values(null,?,?,?,?)");
 
                 $sql->execute(array(
                     $this->name,
@@ -34,7 +34,7 @@ class Category
                     echo "<script> alert('Sua categoria foi criada com sucesso!'); </script>";
 
                 } else {
-                    echo "<script> alert('Não foi possivel criar sua categoria'); </script>";
+                    echo "<script> alert('Não foi possível criar sua categoria'); </script>";
                 }
             }
         } catch (PDOException $msg) {
@@ -106,3 +106,4 @@ class Category
             echo "<script> alert('Não foi possível deletar a categoria: {$msg->getMessage()}'); </script>";
         }
     }
+}
