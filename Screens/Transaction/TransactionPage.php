@@ -18,19 +18,15 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 	}
 
 	if(isset($_GET['confirmUpdate'])){
-		$Category->CreateCategory();
+		$Category->UpdateCategory();
 	}
 
 	if(isset($_GET['confirmDelete'])){
-		$Category->CreateCategory();
+		$Category->DeleteCategory();
 	}
 
 } else {
     header('location: ../../index.php');
-}
-
-if(isset($_GET["confirmDelete"])) {
-    $Categoria->excluir($_GET["confirmDelete"]);
 }
 ?>
 
@@ -184,9 +180,12 @@ if(isset($_GET["confirmDelete"])) {
 			<form action="TransactionPage.php" method="post" id="formDesp" class="form-register">
 				<label for="typeDesp">Nome da despesa</label>
 				<select class="form-control cursor" name="typeDesp">
-					<option hidden>Nomes</option>
-					<option value="5">Compra de supermercado</option>
-					<option value="D">Y</option>
+				<option hidden>Nomes</option>
+				<?php if ($ListingExpense) :
+							foreach ($ListingExpense as $categoria) : ?>
+					<option value="<?php echo $categoria->id ?>"><?php echo $categoria->name ?></option>
+						<?php  endforeach; ?>
+					<?php endif; ?>
 				</select>
 				<label for="valueDesp">Valor de despesa</label>
 				<input
@@ -194,7 +193,6 @@ if(isset($_GET["confirmDelete"])) {
 					class="form-control"
 					id="valueDesp"
 					name="valueDesp"
-					placeholder="Compra no supermercado"
 					onchange="MoneyMask('valueDesp')"
 				/>
 				<div class="container-btn">
@@ -207,11 +205,14 @@ if(isset($_GET["confirmDelete"])) {
 				<label for="typeRece">Nome da receita</label>
 				<select class="form-control cursor" name="typeRece">
 					<option hidden>Nomes</option>
-					<option value="R">X</option>
-					<option value="D">Y</option>
+					<?php if ($ListingRecipe) :
+							foreach ($ListingRecipe as $categoria) : ?>
+					<option value="<?php echo $categoria->id ?>"><?php echo $categoria->name ?></option>
+						<?php  endforeach; ?>
+					<?php endif; ?>
 				</select>
 				<label for="valueRece">Valor de receita</label>
-				<input type="text" class="form-control" id="valueRece" name="valueRece" placeholder="Salário" onchange="MoneyMask('valueRece')" />
+				<input type="text" class="form-control" id="valueRece" name="valueRece" onchange="MoneyMask('valueRece')" />
 				<div class="container-btn">
 					<button type="button" class="btn btn-light" onclick="CloseForm()">Fechar</button>
 					<button type="submit" class="btn btn-info">Criar</button>
@@ -242,7 +243,7 @@ if(isset($_GET["confirmDelete"])) {
 						<?php  endforeach ; ?>
 						<?php else : ?>
 						<tr>
-          					<td colspan="4">Nenhuma categoria cadastrada!!</td>
+          					<td colspan="4">Nenhuma categoria de receita cadastrada!!</td>
         				</tr>
         				<?php endif; ?>
 					</table>
@@ -265,14 +266,14 @@ if(isset($_GET["confirmDelete"])) {
 							<td><?php echo $categoria->class ?></td>
 							<td><?php echo $categoria->type ?></td>
 							<td>
-								<button type="button" class="btn btn-info btn-table"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
+								<a href="TransactionPage.php?confirmUpdate=<?php echo $categoria->id ?>" class="btn btn-info btn-table"><i class="fas fa-edit"></i></a>
+								<a href="TransactionPage.php?confirmDelete=<?php echo $categoria->id ?>" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></a>
 							</td>
 						</tr>
-						<?php  endforeach ; ?>
+						<?php  endforeach; ?>
 						<?php else : ?>
 						<tr>
-          					<td colspan="4">Nenhuma categoria cadastrada!!</td>
+          					<td colspan="4">Nenhuma categoria de despesa cadastrada!!</td>
         				</tr>
         				<?php endif; ?>			
 					</table>
