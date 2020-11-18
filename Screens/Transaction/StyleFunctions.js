@@ -15,21 +15,30 @@ function OpenForm(id) {
 			break
 
 		case 'formRece':
-			document.getElementById('formCategory').style.display = 'none'
-			document.getElementById('table-category').style.display = 'none'
-			document.getElementById('table-category2').style.display = 'none'
-			document.getElementById('formRece').style.display = 'flex'
-			document.getElementById('formDesp').style.display = 'none'
-			window.location.href = 'TransactionPage.php#formRece'
+			if (document.getElementById('blockedReceive') === null) {
+				document.getElementById('formCategory').style.display = 'none'
+				document.getElementById('table-category').style.display = 'none'
+				document.getElementById('table-category2').style.display = 'none'
+				document.getElementById('formRece').style.display = 'flex'
+				document.getElementById('formDesp').style.display = 'none'
+				window.location.href = 'TransactionPage.php#formRece'
+			} else {
+				alert('Você não possui categoria de receita registrada, cadastre e tente novamente')
+			}
+
 			break
 
 		case 'formDesp':
-			document.getElementById('formCategory').style.display = 'none'
-			document.getElementById('table-category').style.display = 'none'
-			document.getElementById('table-category2').style.display = 'none'
-			document.getElementById('formRece').style.display = 'none'
-			document.getElementById('formDesp').style.display = 'flex'
-			window.location.href = 'TransactionPage.php#formDesp'
+			if (document.getElementById('blockedExpense') === null) {
+				document.getElementById('formCategory').style.display = 'none'
+				document.getElementById('table-category').style.display = 'none'
+				document.getElementById('table-category2').style.display = 'none'
+				document.getElementById('formRece').style.display = 'none'
+				document.getElementById('formDesp').style.display = 'flex'
+				window.location.href = 'TransactionPage.php#formDesp'
+			} else {
+				alert('Você não possui categoria de despesa registrada, cadastre e tente novamente')
+			}
 			break
 	}
 }
