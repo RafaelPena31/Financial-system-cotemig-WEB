@@ -31,6 +31,7 @@ class Category
                 ));
 
                 if($sql->rowCount() > 0) {
+                    header('location: TransactionPage.php');
                     echo "<script> alert('Sua categoria foi criada com sucesso!'); </script>";
 
                 } else {
@@ -46,7 +47,7 @@ class Category
         try {
             $bd = new Conexao();
             $con = $bd->conectar();
-            $sql = $con->prepare("select * from Catetgory where type = ? and User_id = ?");
+            $sql = $con->prepare("select * from Category where type = ? and User_id = ?");
             $sql->execute(array(
                 $type,
                 $_SESSION['userToken']
@@ -100,7 +101,7 @@ class Category
 
             if ($sql->rowCount() > 0) {
                 echo '<script type="text/javascript">alert("Categoria deletada com sucesso!");</script>';
-                header('location: ../../Profile.php');
+                header('location: TransactionPage.php');
             }
         } catch (PDOException $msg) {
             echo "<script> alert('Não foi possível deletar a categoria: {$msg->getMessage()}'); </script>";
