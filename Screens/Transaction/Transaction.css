@@ -103,3 +103,7 @@ td:first-child {
 #table-category2 {
 	display: none;
 }
+
+.data {
+	width: 100%;
+}
