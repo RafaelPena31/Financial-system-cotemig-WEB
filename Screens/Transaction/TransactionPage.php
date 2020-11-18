@@ -1,27 +1,28 @@
 <?php
-
 require_once "../../Classes/Category.php";
-$Categoria = new Category();
+$Category = new Category();
 
 if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
-	$ListingRecipe = $Category->$ListingCategory("R");
-	$ListingExpense = $Category->$ListingCategory("D");
-    if(isset($_GET['desconnect']) && !empty($_GET['desconnect'])) {
+
+	$ListingRecipe = $Category->ListingCategory("R");
+	$ListingExpense = $Category->ListingCategory("D");
+	
+	if(isset($_GET['desconnect']) && !empty($_GET['desconnect'])) {
         $_SESSION = array();
         session_destroy();
         header('location: ../../index.php');
 	}
 	
 	if(isset($_POST['createCategory'])){
-		$Categoria->CreateCategory();
+		$Category->CreateCategory();
 	}
 
 	if(isset($_GET['confirmUpdate'])){
-		$Categoria->CreateCategory();
+		$Category->CreateCategory();
 	}
 
 	if(isset($_GET['confirmDelete'])){
-		$Categoria->CreateCategory();
+		$Category->CreateCategory();
 	}
 
 } else {
@@ -226,7 +227,7 @@ if(isset($_GET["confirmDelete"])) {
 							<th>Tipo</th>
 							<th></th>
 						</tr>
-						<?php if ($ListingCategory) :
+						<?php if ($ListingRecipe) :
 							foreach ($ListingRecipe as $categoria) : ?>
 						<tr class="trCate">
 							<td><?php echo $categoria->id ?></td>
@@ -238,7 +239,7 @@ if(isset($_GET["confirmDelete"])) {
 								<a href="TransactionPage.php?confirmDelete=<?php echo $categoria->id ?>" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></a>
 							</td>
 						</tr>
-						<? php  endforeach ; ?>
+						<?php  endforeach ; ?>
 						<?php else : ?>
 						<tr>
           					<td colspan="4">Nenhuma categoria cadastrada!!</td>
@@ -256,7 +257,7 @@ if(isset($_GET["confirmDelete"])) {
 							<th>Tipo</th>
 							<th></th>
 						</tr>
-						<?php if ($ListingCategory) :
+						<?php if ($ListingExpense) :
 							foreach ($ListingExpense as $categoria) : ?>
 						<tr class="trCate">
 							<td><?php echo $categoria->id ?></td>
@@ -268,7 +269,7 @@ if(isset($_GET["confirmDelete"])) {
 								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
 							</td>
 						</tr>
-						<? php  endforeach ; ?>
+						<?php  endforeach ; ?>
 						<?php else : ?>
 						<tr>
           					<td colspan="4">Nenhuma categoria cadastrada!!</td>
