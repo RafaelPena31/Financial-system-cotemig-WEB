@@ -94,7 +94,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<a class="nav-link h5" href="#">Transações</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link h5" href="../History/History.php">Histórico</a>
+							<a class="nav-link h5" href="../History/History.php?month=1">Histórico</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link h5" href="#">Dashboard</a>
@@ -170,6 +170,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 		</section>
 
 		<div class="form-container">
+
 			<form action="TransactionPage.php" method="post" id="formCategory" class="form-register">
 				<label for="nameCategory">Nome da categoria</label>
 				<input type="text" class="form-control" id="nameCategory" placeholder="Compra no supermercado" name="nameCategory" />
@@ -243,41 +244,43 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 			</form>
 
 			<div class="container-table" id="table-category">
-					<table>
-						<tr class="trCate">
-							<th>ID</th>
-							<th>Nome</th>
-							<th>Classe</th>
-							<th>Tipo</th>
-							<th></th>
-						</tr>
-						<?php if ($ListingRecipe) :
-							foreach ($ListingRecipe as $categoriaReceita) : ?>
-						<tr class="trCate">
-							<td><?php echo $categoriaReceita->id ?></td>
-							<td><?php echo $categoriaReceita->name ?></td>
-							<td><?php echo $categoriaReceita->class ?></td>
-							<td>
-								<?php if($categoriaReceita->type == 'R') : ?>
-									<?php echo 'Receita'; ?>
-								<?php endif; ?>
-							</td>
-							<td>
-								<button 
-									type="button"
- 									class="btn btn-info btn-table" 
-									data-toggle="modal" 
-									data-target="#CategoryR"
-								>
-									<i class="fas fa-edit"></i>
-								</button>
-								<a href="TransactionPage.php?confirmDelete=<?php echo $categoriaReceita->id ?>" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></a>
-							</td>
-						</tr>
+				<table>
+					<tr class="trCate">
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Classe</th>
+						<th>Tipo</th>
+						<th></th>
+					</tr>
+					<?php if ($ListingRecipe) :
+						foreach ($ListingRecipe as $categoriaReceita) : ?>
+							<tr class="trCate">
+								<td><?php echo $categoriaReceita->id ?></td>
+								<td><?php echo $categoriaReceita->name ?></td>
+								<td><?php echo $categoriaReceita->class ?></td>
+								<td>
+									<?php if($categoriaReceita->type == 'R') : ?>
+										<?php echo 'Receita'; ?>
+									<?php endif; ?>
+								</td>
+								<td>
+									<button 
+										type="button"
+										class="btn btn-info btn-table" 
+										data-toggle="modal" 
+										data-target="#CategoryR"
+									>
+										<i class="fas fa-edit"></i>
+									</button>
+									<a href="TransactionPage.php?confirmDelete=<?php echo $categoriaReceita->id ?>" class="btn btn-danger btn-table">
+										<i class="fas fa-trash"></i>
+									</a>
+								</td>
+							</tr>
 						
-						<!-- Start Update Modal -->
+							<!-- Start Update Modal -->
 
-						<div
+							<div
 								class="modal fade" 
 								id="CategoryR"
 								data-backdrop="static"
@@ -295,92 +298,92 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 											</button>
 										</div>
 										<div class="modal-body">
-										<form action="TransactionPage.php" method="POST">
-											
-											<label for="updateNameCategory">Nome da categoria</label>
-											<input 
-												type="text" 
-												class="form-control" 
-												id="updateNameCategory" 
-												placeholder="Exemplo: Compra no supermercado..." 
-												name="updateNameCategory"
-												value="<?php echo $categoriaReceita->name; ?>"
-											/>
+											<form action="TransactionPage.php" method="POST">
+													
+												<label for="updateNameCategory">Nome da categoria</label>
+												<input 
+													type="text" 
+													class="form-control" 
+													id="updateNameCategory" 
+													placeholder="Exemplo: Compra no supermercado..." 
+													name="updateNameCategory"
+													value="<?php echo $categoriaReceita->name; ?>"
+												/>
 
-											<label for="updateTypeCategory">Tipo da categoria</label>
-											<select class="form-control cursor" name="updateTypeCategory">
-												<option hidden>Tipos</option>
-												<option 
-													value="R"
-													<?php if($categoriaReceita->type == "R") { echo "selected"; } ?>	
-												>
-													Receita
-												</option>
-												<option 
-													value="D"
-													<?php if($categoriaReceita->type == "D") { echo "selected"; } ?>	
-												>
-													Despesa
-												</option>
-											</select>
+												<label for="updateTypeCategory">Tipo da categoria</label>
+												<select class="form-control cursor" name="updateTypeCategory">
+													<option hidden>Tipos</option>
+													<option 
+														value="R"
+														<?php if($categoriaReceita->type == "R") { echo "selected"; } ?>	
+													>
+														Receita				
+													</option>
+													<option 
+														value="D"
+														<?php if($categoriaReceita->type == "D") { echo "selected"; } ?>	
+													>
+														Despesa
+													</option>
+												</select>
 
-											<label for="updateClassCategory">Classe da categoria</label>
-											<select class="form-control cursor" name="updateClassCategory">
-												<option hidden>Classes</option>
-												<option 
-													value="Alimentação" 
-													<?php if($categoriaReceita->class == "Alimentação") { echo "selected"; } ?>
-												>
-													Alimentação
-												</option>
-												<option 
-													value="Educação"
-													<?php if($categoriaReceita->class == "Educação") { echo "selected"; } ?>	
-												>
-													Educação
-												</option>
-												<option 
-													value="Lazer"
-													<?php if($categoriaReceita->class == "Lazer") { echo "selected"; } ?>	
-												>
-													Lazer
-												</option>
-												<option 
-													value="Trabalho"
-													<?php if($categoriaReceita->class == "Trabalho") { echo "selected"; } ?>	
-												>
-													Trabalho
-												</option>
-												<option 
-													value="Transporte"
-													<?php if($categoriaReceita->class == "Transporte") { echo "selected"; } ?>	
-												>
-													Transporte
-												</option>
-												<option 
-													value="Vestuário"
-													<?php if($categoriaReceita->class == "Vestuário") { echo "selected"; } ?>	
-												>
-													Vestuário
-												</option>
-												<option 
-													value="Outros"
-													<?php if($categoriaReceita->class == "Outros") { echo "selected"; } ?>	
-												>
-													Outros
-												</option>
-											</select>
+												<label for="updateClassCategory">Classe da categoria</label>
+												<select class="form-control cursor" name="updateClassCategory">
+													<option hidden>Classes</option>
+													<option 
+														value="Alimentação" 
+														<?php if($categoriaReceita->class == "Alimentação") { echo "selected"; } ?>
+													>
+														Alimentação
+													</option>
+													<option 
+														value="Educação"
+														<?php if($categoriaReceita->class == "Educação") { echo "selected"; } ?>	
+													>
+														Educação
+													</option>
+													<option 
+														value="Lazer"
+														<?php if($categoriaReceita->class == "Lazer") { echo "selected"; } ?>	
+													>
+														Lazer
+													</option>
+													<option 
+														value="Trabalho"
+														<?php if($categoriaReceita->class == "Trabalho") { echo "selected"; } ?>	
+													>
+														Trabalho
+													</option>
+													<option 
+														value="Transporte"
+														<?php if($categoriaReceita->class == "Transporte") { echo "selected"; } ?>	
+													>
+														Transporte
+													</option>
+													<option 
+														value="Vestuário"
+														<?php if($categoriaReceita->class == "Vestuário") { echo "selected"; } ?>	
+													>
+														Vestuário
+													</option>
+													<option 
+														value="Outros"
+														<?php if($categoriaReceita->class == "Outros") { echo "selected"; } ?>	
+													>
+														Outros
+													</option>
+												</select>
 
-											<button 
-												type="submit" 
-												class="btn btn-info btn-modal-submit" 
-												name="confirmUpdate" 
-												value="<?php echo $categoriaReceita->id; ?>"
-											>
-												Alterar
-											</button>
-										</form>
-										
+												<button 
+													type="submit" 
+													class="btn btn-info btn-modal-submit" 
+													name="confirmUpdate" 
+													value="<?php echo $categoriaReceita->id; ?>"
+												>
+													Alterar
+												</button>
+											</form>
+												
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -392,69 +395,71 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<!-- End Update Modal -->
 
 						<?php  endforeach ; ?>
-						<?php else : ?>
+					<?php else : ?>
 						<tr>
-          					<td colspan="4" id="blockedReceive">Nenhuma categoria de receita cadastrada!!</td>
-        				</tr>
-        				<?php endif; ?>
-					</table>
-				</div>
+          		<td colspan="4" id="blockedReceive">Nenhuma categoria de receita cadastrada!!</td>
+        		</tr>
+        	<?php endif; ?>
+				</table>
+			</div>
 
-				<div class="container-table" id="table-category2">
-					<table>
-						<tr class="trCate">
-							<th>ID</th>
-							<th>Nome</th>
-							<th>Classe</th>
-							<th>Tipo</th>
-							<th></th>
-						</tr>
-						<?php if ($ListingExpense) :
-							foreach ($ListingExpense as $categoriaDespesa) : ?>
-						<tr class="trCate">
-							<td><?php echo $categoriaDespesa->id ?></td>
-							<td><?php echo $categoriaDespesa->name ?></td>
-							<td><?php echo $categoriaDespesa->class ?></td>
-							<td>
-								<?php if($categoriaDespesa->type === 'D') : ?>
-									<?php echo 'Despesa'; ?>
-								<?php endif; ?>
-							</td>
-							<td>
-							<button 
-								type="button"
-								class="btn btn-info btn-table" 
-								data-toggle="modal" 
-								data-target="#CategoryD"
-							>
-								<i class="fas fa-edit"></i>
-							</button>
-								<a href="TransactionPage.php?confirmDelete=<?php echo $categoriaDespesa->id ?>" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></a>
-							</td>
-						</tr>
+			<div class="container-table" id="table-category2">
+				<table>
+					<tr class="trCate">
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Classe</th>
+						<th>Tipo</th>
+						<th></th>
+					</tr>
+					<?php if ($ListingExpense) :
+						foreach ($ListingExpense as $categoriaDespesa) : ?>
+							<tr class="trCate">
+								<td><?php echo $categoriaDespesa->id ?></td>
+								<td><?php echo $categoriaDespesa->name ?></td>
+								<td><?php echo $categoriaDespesa->class ?></td>
+								<td>
+									<?php if($categoriaDespesa->type === 'D') : ?>
+										<?php echo 'Despesa'; ?>
+									<?php endif; ?>
+								</td>
+								<td>
+									<button 
+										type="button"
+										class="btn btn-info btn-table" 
+										data-toggle="modal" 
+										data-target="#CategoryD"
+									>
+										<i class="fas fa-edit"></i>
+									</button>
+									<a href="TransactionPage.php?confirmDelete=<?php echo $categoriaDespesa->id ?>" class="btn btn-danger btn-table">
+										<i class="fas fa-trash"></i>
+									</a>
+								</td>
+							</tr>
 
 						<!-- Start Update Modal -->
 
 						<div
-								class="modal fade" 
-								id="CategoryD"
-								data-backdrop="static"
-								data-keyboard="false"
-								tabindex="-1"
-								aria-labelledby="staticBackdropLabel"
-								aria-hidden="true"
-							>
-								<div class="modal-dialog modal-dialog-centered">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title" id="staticBackdropLabel">Atualize sua categoria</h5>
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-										</div>
-										<div class="modal-body">
+							class="modal fade" 
+							id="CategoryD"
+							data-backdrop="static"
+							data-keyboard="false"
+							tabindex="-1"
+							aria-labelledby="staticBackdropLabel"
+							aria-hidden="true"
+						>
+							<div class="modal-dialog modal-dialog-centered">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="staticBackdropLabel">Atualize sua categoria</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
 										<form action="TransactionPage.php" method="POST">
-											
+										
 											<label for="updateNameCategory">Nome da categoria</label>
 											<input 
 												type="text" 
@@ -539,24 +544,24 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 											</button>
 										</form>
 										
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 									</div>
 								</div>
 							</div>
+						</div>
 
-							<!-- End Update Modal -->
+						<!-- End Update Modal -->
 
 						<?php  endforeach; ?>
-						<?php else : ?>
+					<?php else : ?>
 						<tr>
-          					<td colspan="4" id="blockedExpense">Nenhuma categoria de despesa cadastrada!!</td>
-        				</tr>
-        				<?php endif; ?>			
-					</table>
-				</div>
+          		<td colspan="4" id="blockedExpense">Nenhuma categoria de despesa cadastrada!!</td>
+        		</tr>
+        	<?php endif; ?>			
+				</table>
+			</div>
 
 		</div>	
 	</body>
