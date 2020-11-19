@@ -1,4 +1,6 @@
 <?php
+header("Content-type:text/html; charset=utf8");
+
 session_start();
 
 require_once "../../Classes/Registration.php";
