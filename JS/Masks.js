@@ -22,7 +22,7 @@ function PhoneMask(id) {
 
 function MoneyMask(id) {
 	let valor = document.getElementById(id).value
-	const typeCoin = { style: 'currency', currency: 'USD' }
+	const typeCoin = { style: 'currency', currency: 'USD', useGrouping: false }
 	const formatCoin = new Intl.NumberFormat('en', typeCoin)
 	document.getElementById(id).value = 'R' + formatCoin.format(valor)
 }
