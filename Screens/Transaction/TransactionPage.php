@@ -39,6 +39,9 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 		$Registration->CreateRegistration('R');
 	}
 
+	if(isset($_POST['createRegistration'])){
+        $Registration->CreateRegistration();
+    }
 
 } else {
     header('location: ../../index.php');
@@ -63,6 +66,42 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 		<title>Transações</title>
 	</head>
 	<body>
+	<div
+			class="modal fade"
+			id="Category"
+			data-backdrop="static"
+			data-keyboard="false"
+			tabindex="-1"
+			aria-labelledby="staticBackdropLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+					<label for="typeCategory">Tipo da categoria</label>
+						<select class="form-control cursor" name="typeCategory">
+							<option hidden>Tipos</option>
+							<option value="R">Receita</option>
+							<option value="D">Despesa</option>
+						</select>
+
+						<label for="nameCategory">Nome da categoria</label>
+						<input type="text" class="form-control" id="nameCategory" placeholder="Compra no supermercado" name="nameCategory" />
+						<button type="submit" class="btn btn-info btn-modal-submit">Alterar</button>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 			<section class="nav-content">
 				<div class="menu-btn">
@@ -188,7 +227,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 				</select>
 				<div class="container-btn">
 					<button type="button" class="btn btn-light" onclick="CloseForm()">Fechar</button>
-					<button type="submit" name="createCategory" class="btn btn-info">Criar</button>
+					<button type="submit" name="createCategory" class="btn btn-info" data-toggle="modal" data-target="#Category">Criar</button>
 				</div>
 			</form>
 

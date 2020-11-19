@@ -1,6 +1,14 @@
 <?php
 session_start();
+
+require_once "../../Classes/Registration.php";
+
+$Registration = new Registration();
+
 if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
+
+	$ListingRegistration = $Registration->ListingRegistration();
+
     if(isset($_GET['desconnect']) && !empty($_GET['desconnect'])) {
         $_SESSION = array();
         session_destroy();
@@ -9,6 +17,15 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 } else {
     header('location: ../../index.php');
 }
+
+	if(isset($_GET['confirmUpdate'])){
+        $Registration->UpdateRegistration();
+    }
+
+    if(isset($_GET['confirmDelete'])){
+        $Registration->DeleteRegistration();
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -182,41 +199,25 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<th>Data</th>
 							<th></th>
 						</tr>
+						<?php if ($ListingRegistration) :
+                            foreach ($ListingRegistration as $registrar) : ?>
 						<tr class="trRece">
-							<td>1</td>
-							<td>Compra no supermercado</td>
-							<td>Alimentação</td>
-							<td>R$ 550,00</td>
-							<td>14/11/2020</td>
+							<td><?php echo $registrar->id ?></td>
+							<td><?php echo $registrar->class ?></td>
+							<td><?php echo $registrar->type ?></td>
+							<td><?php echo $registrar->value ?></td>
+							<td><?php echo $registrar->data ?></td>
 							<td>
-								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table" data-toggle="modal" data-target="#deletar"><i class="fas fa-trash"></i></button>
+								<a href="History.php?confirmUpdate=<?php echo $registrar->id ?>" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></a>
+								<a href="History.php?confirmDelete=<?php echo $registrar->id ?>" class="btn btn-danger btn-table" data-toggle="modal" data-target="#deletar"><i class="fas fa-trash"></i></a>
 							</td>
 						</tr>
-						<tr class="trRece">
-							<td>1</td>
-							<td>Compra no supermercado</td>
-							<td>Alimentação</td>
-							<td>R$ 550,00</td>
-							<td>14/11/2020</td>
-							<td>
-								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table" data-dismiss="modal" data-toggle="#deletar" ><i class="fas fa-trash"></i></button>
-							</td>
-						</tr>
-						<tr class="trRece">
-							<td>1</td>
-							<td>Compra no supermercado</td>
-							<td>Alimentação</td>
-							<td>R$ 550,00</td>
-							<td>14/11/2020</td>
-							<td>
-								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table" data-dismiss="modal" data-toggle="#deletar" ><i class="fas fa-trash"></i></button>
-							</td>
-						</tr>
-					</table>
-				</div>
+						<?php endforeach ; ?>
+                        <?php else : ?>
+						<tr>
+                            <td colspan="5" id="blockedRegistrationReceita">Nenhuma receita cadastrada!!</td>
+                        </tr>
+                        <?php endif; ?>			
 
 				<div class="title-table">
 					<h3>Despesas</h3>
@@ -252,39 +253,25 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<th>Data</th>
 							<th></th>
 						</tr>
+						<?php if ($ListingRegistration) :
+                            foreach ($ListingRegistration as $registrar) : ?>
 						<tr class="trDesp">
-							<td>1</td>
-							<td>Compra no supermercado</td>
-							<td>Alimentação</td>
-							<td>R$ 550,00</td>
-							<td>14/11/2020</td>
+							<td><?php echo $registrar->id ?></td>
+							<td><?php echo $registrar->class ?></td>
+							<td><?php echo $registrar->type ?></td>
+							<td><?php echo $registrar->value ?></td>
+							<td><?php echo $registrar->data ?></td>
 							<td>
-								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
+								<a href="History.php?confirmUpdate=<?php echo $registrar->id ?>" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></a>
+								<a href="History.php?confirmDelete=<?php echo $registrar->id ?>" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></a>
 							</td>
 						</tr>
-						<tr class="trDesp">
-							<td>1</td>
-							<td>Compra no supermercado</td>
-							<td>Alimentação</td>
-							<td>R$ 550,00</td>
-							<td>14/11/2020</td>
-							<td>
-								<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
-								<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
-							</td>
-						</tr>
-						<tr class="trDesp">
-							<td>1</td>
-							<td>Compra no supermercado</td>
-							<td>Alimentação</td>
-							<td>R$ 550,00</td>
-							<td>14/11/2020</td>
-							<td>
-							<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></button>
-							<button type="button" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></button>
-							</td>
-						</tr>
+						<?php endforeach ; ?>
+                        <?php else : ?>
+						<tr>
+                            <td colspan="5" id="blockedRegistrationDespesa">Nenhuma despesa cadastrada!!</td>
+                        </tr>
+                        <?php endif; ?>		
 					</table>
 				</div>
 			</main>
