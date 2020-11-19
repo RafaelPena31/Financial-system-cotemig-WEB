@@ -1,7 +1,9 @@
 <?php
 header("Content-type:text/html; charset=utf8");
 
+session_start();
 require_once "Classes/User.php";
+
 $User = new User();
 if(isset($_POST["logUser"])) {
     $User->Authenticator();

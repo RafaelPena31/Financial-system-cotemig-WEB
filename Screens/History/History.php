@@ -1,4 +1,6 @@
 <?php
+header("Content-type:text/html; charset=utf8");
+
 session_start();
 if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
     if(isset($_GET['desconnect']) && !empty($_GET['desconnect'])) {
