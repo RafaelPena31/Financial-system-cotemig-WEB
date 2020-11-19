@@ -82,7 +82,7 @@ class Registration
       try {
         $bd = new Conexao();
         $con = $bd->conectar();
-        $sql = $con->prepare("select Registration.data, Registration.value, Category.name, Category.type, Category.class from Registration join Category on Category_id = Category.id and Registration.User_id = ? where Category.type = ?;");
+        $sql = $con->prepare("select Registration.data, Registration.value, Registration.id, Category.name, Category.type, Category.class from Registration join Category on Category_id = Category.id and Registration.User_id = ? where Category.type = ? and month(Registration.data) = ?" );
 
         $sql->execute(array(
             $_SESSION["userToken"],
@@ -92,7 +92,7 @@ class Registration
 
         if ($sql->rowCount() > 0) {
              return $result = $sql->fetchAll(PDO::FETCH_CLASS);
-        }
+        } 
 
       } catch (PDOException $msg) {
         echo "<script> alert('Não foi possível listar suas despesas e suas receitas: {$msg->getMessage()}'); </script>";
@@ -136,14 +136,14 @@ class Registration
         try{
             $bd = new Conexao();
             $con = $bd->conectar();
-            $sql = $con->prepare('delete from Regisration where id = ?');
+            $sql = $con->prepare('delete from Registration where id = ?');
             $sql->execute(array(
                 $_GET["confirmDelete"]
             ));
 
             if ($sql->rowCount() > 0) {
                 echo '<script type="text/javascript">alert("Receita ou Despesa deletada com sucesso!");</script>';
-                header('location: History.php');
+                header('location: History.php?month='.$_GET['month']);
             }
         }catch (PDOException $msg) {
             echo "<script> alert('Não foi possivel deletar a categoria: {$msg->getMessage()}');</script>";
