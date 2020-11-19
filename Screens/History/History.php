@@ -9,7 +9,42 @@ $Registration = new Registration();
 
 if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 
-	$ListingRegistration = $Registration->ListingRegistration();
+	/* Jan */
+	$ListingExpenseJan = $Registration->ListingRegistration('D', 'jan');
+	$ListingReceiveJan = $Registration->ListingRegistration('R', 'jan');
+	/* Fev */
+	$ListingExpenseFev = $Registration->ListingRegistration('D', 'fev');
+	$ListingReceiveFev = $Registration->ListingRegistration('R', 'fev');
+	/* Mar */
+	$ListingExpenseMar = $Registration->ListingRegistration('D', 'mar');
+	$ListingReceiveMar = $Registration->ListingRegistration('R', 'mar');
+	/* Abr */
+	$ListingExpenseAbr = $Registration->ListingRegistration('D', 'abr');
+	$ListingReceiveAbr = $Registration->ListingRegistration('R', 'abr');
+	/* Mai */
+	$ListingExpenseMai = $Registration->ListingRegistration('D', 'mai');
+	$ListingReceiveMai = $Registration->ListingRegistration('R', 'mai');
+	/* Jun */
+	$ListingExpenseJun = $Registration->ListingRegistration('D', 'jun');
+	$ListingReceiveJun = $Registration->ListingRegistration('R', 'jun');
+	/* Jul */
+	$ListingExpenseJul = $Registration->ListingRegistration('D', 'jul');
+	$ListingReceiveJul = $Registration->ListingRegistration('R', 'jul');
+	/* Ago */
+	$ListingExpenseAgo = $Registration->ListingRegistration('D', 'ago');
+	$ListingReceiveAgo = $Registration->ListingRegistration('R', 'ago');
+	/* Set */
+	$ListingExpenseSet = $Registration->ListingRegistration('D', 'set');
+	$ListingReceiveSet = $Registration->ListingRegistration('R', 'set');
+	/* Out */
+	$ListingExpenseOut = $Registration->ListingRegistration('D', 'out');
+	$ListingReceiveOut = $Registration->ListingRegistration('R', 'out');
+	/* Nov */
+	$ListingExpenseNov = $Registration->ListingRegistration('D', 'nov');
+	$ListingReceiveNov = $Registration->ListingRegistration('R', 'nov');
+	/* Dez */
+	$ListingExpenseDez = $Registration->ListingRegistration('D', 'dez');
+	$ListingReceiveDez = $Registration->ListingRegistration('R', 'dez');
 
     if(isset($_GET['desconnect']) && !empty($_GET['desconnect'])) {
         $_SESSION = array();
@@ -38,14 +73,14 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 		<title>Histórico</title>
 		<link
 			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+			href="History.php?month=ps://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 			integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
-		<link rel="stylesheet" href="../../Styles/_fonts.css" />
-		<link rel="stylesheet" href="../../Styles/header.css" />
-		<link rel="stylesheet" href="History.css" />
+		<link rel="stylesheet" href="History.php?month=ps://use.fontawesome.com/releases/v5.15.1/css/all.css" />
+		<link rel="stylesheet" href="History.php?month=../Styles/_fonts.css" />
+		<link rel="stylesheet" href="History.php?month=../Styles/header.css" />
+		<link rel="stylesheet" href="History.php?month=tory.css" />
 	</head>
 	<body>
 	
@@ -92,7 +127,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 			<section class="nav-content">
 				<div class="menu-btn">
-					<a class="navbar-brand" href="#">
+					<a class="navbar-brand" href="History.php?month=
 						<i class="fas fa-comment-dollar fa-lg"></i>
 						Finanças
 					</a>
@@ -113,19 +148,19 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<div class="mr-auto"></div>
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link h5" href="../Transaction/TransactionPage.php">Transações</a>
+							<a class="nav-link h5" href="History.php?month=Transaction/TransactionPage.php">Transações</a>
 						</li>
 						<li class="nav-item active">
-							<a class="nav-link h5" href="#">Histórico</a>
+							<a class="nav-link h5" href="History.php?month=Histórico</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link h5" href="#">Dashboard</a>
+							<a class="nav-link h5" href="History.php?month=Dashboard</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link h5" href="../Profile/Profile.php">Perfil</a>
+							<a class="nav-link h5" href="History.php?month=Profile/Profile.php">Perfil</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link h5" href="History.php?desconnect=true">Desconectar</a>
+							<a class="nav-link h5" href="History.php?month=tory.php?desconnect=true">Desconectar</a>
 						</li>
 					</ul>
 				</div>
@@ -149,11 +184,11 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							</article>
 						</div>
 					</div>
-					<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+					<a class="carousel-control-prev" href="History.php?month=rouselExampleControls" role="button" data-slide="prev">
 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 						<span class="sr-only">Previous</span>
 					</a>
-					<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+					<a class="carousel-control-next" href="History.php?month=rouselExampleControls" role="button" data-slide="next">
 						<span class="carousel-control-next-icon" aria-hidden="true"></span>
 						<span class="sr-only">Next</span>
 					</a>
@@ -175,18 +210,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-light jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-light jan" onclick="ChangeMonth('jan')">1</button>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -210,8 +245,8 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td><?php echo $registrar->value ?></td>
 							<td><?php echo $registrar->data ?></td>
 							<td>
-								<a href="History.php?confirmUpdate=<?php echo $registrar->id ?>" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></a>
-								<a href="History.php?confirmDelete=<?php echo $registrar->id ?>" class="btn btn-danger btn-table" data-toggle="modal" data-target="#deletar"><i class="fas fa-trash"></i></a>
+								<a href="History.php?month=tory.php?confirmUpdate=<?php echo $registrar->id ?>" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></a>
+								<a href="History.php?month=tory.php?confirmDelete=<?php echo $registrar->id ?>" class="btn btn-danger btn-table" data-toggle="modal" data-target="#deletar"><i class="fas fa-trash"></i></a>
 							</td>
 						</tr>
 						<?php endforeach ; ?>
@@ -229,18 +264,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-light jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-light jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -264,8 +299,8 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<td><?php echo $registrar->value ?></td>
 							<td><?php echo $registrar->data ?></td>
 							<td>
-								<a href="History.php?confirmUpdate=<?php echo $registrar->id ?>" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></a>
-								<a href="History.php?confirmDelete=<?php echo $registrar->id ?>" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></a>
+								<a href="History.php?month=tory.php?confirmUpdate=<?php echo $registrar->id ?>" class="btn btn-info btn-table" data-toggle="modal" data-target="#editar"><i class="fas fa-edit"></i></a>
+								<a href="History.php?month=tory.php?confirmDelete=<?php echo $registrar->id ?>" class="btn btn-danger btn-table"><i class="fas fa-trash"></i></a>
 							</td>
 						</tr>
 						<?php endforeach ; ?>
@@ -293,18 +328,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-light fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-light fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -363,18 +398,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-light fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-light fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -441,18 +476,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-light mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-light mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -511,18 +546,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-light mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-light mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -589,18 +624,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-light abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-light abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -659,18 +694,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-light abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-light abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -737,18 +772,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-light maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-light maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -807,18 +842,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-light maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-light maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -885,18 +920,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-light jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-light jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -955,18 +990,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-light jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-light jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -1033,18 +1068,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-light jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-light jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -1103,18 +1138,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-light jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-light jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -1181,18 +1216,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-light ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-light ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -1251,18 +1286,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-light ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-light ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -1329,18 +1364,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-light set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-light set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -1399,18 +1434,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-light set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-light set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -1477,18 +1512,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-light out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-light out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -1547,18 +1582,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-light out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-light out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -1625,18 +1660,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-light nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-light nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -1695,18 +1730,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-light nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-light nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-secondary dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -1773,18 +1808,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-light dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-light dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
@@ -1843,18 +1878,18 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<label for="container-btn">Selecione o mês:</label>
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" name="container-btn" id="container-btn">
 						<div class="btn-group mr-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</button>
-							<button type="button" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</button>
-							<button type="button" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</button>
-							<button type="button" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</button>
-							<button type="button" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</button>
-							<button type="button" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</button>
-							<button type="button" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</button>
-							<button type="button" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</button>
-							<button type="button" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</button>
-							<button type="button" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</button>
-							<button type="button" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</button>
-							<button type="button" class="btn btn-light dez" onclick="ChangeMonth('dez')">12</button>
+							<a href="History.php?month=jan" class="btn btn-secondary jan" onclick="ChangeMonth('jan')">1</a>
+							<a href="History.php?month=fev" class="btn btn-secondary fev" onclick="ChangeMonth('fev')">2</a>
+							<a href="History.php?month=mar" class="btn btn-secondary mar" onclick="ChangeMonth('mar')">3</a>
+							<a href="History.php?month=abr" class="btn btn-secondary abr" onclick="ChangeMonth('abr')">4</a>
+							<a href="History.php?month=mai" class="btn btn-secondary maio" onclick="ChangeMonth('mai')">5</a>
+							<a href="History.php?month=jun" class="btn btn-secondary jun" onclick="ChangeMonth('jun')">6</a>
+							<a href="History.php?month=jul" class="btn btn-secondary jul" onclick="ChangeMonth('jul')">7</a>
+							<a href="History.php?month=ago" class="btn btn-secondary ago" onclick="ChangeMonth('ago')">8</a>
+							<a href="History.php?month=set" class="btn btn-secondary set" onclick="ChangeMonth('set')">9</a>
+							<a href="History.php?month=out" class="btn btn-secondary out" onclick="ChangeMonth('out')">10</a>
+							<a href="History.php?month=nov" class="btn btn-secondary nov" onclick="ChangeMonth('nov')">11</a>
+							<a href="History.php?month=dez" class="btn btn-light dez" onclick="ChangeMonth('dez')">12</a>
 						</div>
 					</div>
 				</nav>
