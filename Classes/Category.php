@@ -62,22 +62,24 @@ class Category
 
     public function UpdateCategory(){
         try {
-            if (isset($_POST['editar'])){
-                $this->id = $_GET["categoryId"];
-                $this->name = $_POST["nameCategory"];
-                $this->type  = $_POST["typeCategory"];
-                $this->class = $_POST["classCategory"];
-
+            if (isset($_POST['confirmUpdate'])){
+                $this->id = intval($_POST["confirmUpdate"]);
+                $this->name = $_POST["updateNameCategory"];
+                $this->type  = $_POST["updateTypeCategory"];
+                $this->class = $_POST["updateClassCategory"];
                 $bd = new Conexao();
 
                 $con = $bd->conectar();
-                $sql = $con->prepare("update alunos set name = ?,type = ?,class = ? where id = ?");
+                $sql = $con->prepare("update Category set name = ?,type = ?,class = ? where id = ?");
                 $sql->execute(array(
                     $this->name,
                     $this->type,
                     $this->class,
-                    $_GET["confirmUpdate"]
+                    $this->id
                 ));
+
+                var_dump($sql->rowCount());
+
                 if ($sql->rowCount() > 0) {
                     header("location: TransactionPage.php");
                 }
