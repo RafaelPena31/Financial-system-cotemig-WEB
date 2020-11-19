@@ -75,7 +75,8 @@ class Registration
             echo "<script> alert('Não foi possível criar a sua despesa: {$msg->getMessage()}'); </script>";
           }
         }
-  }
+  
+
 
 
     public function ListingRegistration($type){
@@ -97,7 +98,8 @@ class Registration
       } catch (PDOException $msg) {
         echo "<script> alert('Não foi possível listar suas despesas e suas receitas: {$msg->getMessage()}'); </script>";
   }
-
+}
+    
 
     public function UpdateRegistration(){
         try {
