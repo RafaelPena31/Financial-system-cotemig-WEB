@@ -4,14 +4,27 @@ session_start();
 
 require_once "../../Classes/Category.php";
 require_once "../../Classes/Registration.php";
+require_once "../../Classes/User.php";
 
 $Category = new Category();
 $Registration = new Registration();
+$User = new User();
 
 if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 
 	$ListingRecipe = $Category->ListingCategory("R");
 	$ListingExpense = $Category->ListingCategory("D");
+
+	$ListingUserData = $User->ListingUserData();
+	$expense = 0;
+	$recipe = 0;
+	$balance = 0;
+
+	foreach ($ListingUserData as $UserData) :
+		$expense = $UserData->expense;
+		$recipe = $UserData->recipe;
+		$balance = $UserData->balance;
+		endforeach;
 	
 	if(isset($_GET['desconnect']) && !empty($_GET['desconnect'])) {
         $_SESSION = array();
@@ -113,17 +126,17 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<article class="item-money-view">
-								<p class="item-money-text">Saldo: R$ 00,00</p>
+								<p class="item-money-text">Saldo: R$ <?php echo $balance; ?></p>
 							</article>
 						</div>
 						<div class="carousel-item">
 							<article class="item-money-view">
-								<p class="item-money-text">Despesa: R$ 00,00</p>
+								<p class="item-money-text">Despesa: R$ <?php echo $expense; ?></p>
 							</article>
 						</div>
 						<div class="carousel-item">
 							<article class="item-money-view">
-								<p class="item-money-text">Receita: R$ 00,00</p>
+								<p class="item-money-text">Receita: R$ <?php echo $recipe; ?></p>
 							</article>
 						</div>
 					</div>
