@@ -10,6 +10,8 @@ class User
     public $address;
     public $phone;
     public $password;
+    public $recipe;
+    public $expense;
 
     public function VerifyUserToCreate() {
         try {
@@ -111,11 +113,10 @@ class User
 
     public function UpdateUserData() {
         try {
-
+            $bd = new Conexao();
+            $con = $bd->conectar();
             if(isset($_POST['nameInput']) && !empty($_POST['nameInput'])) {
                 $this->name = $_POST['nameInput'];
-                $bd = new Conexao();
-                $con = $bd->conectar();
                 $sql = $con->prepare('update User set name = ? where id = ?');
                 $sql->execute(array(
                     $this->name,
@@ -131,8 +132,6 @@ class User
 
             } elseif (isset($_POST['emailInput']) && !empty($_POST['emailInput'])) {
                 $this->email = $_POST['emailInput'];
-                $bd = new Conexao();
-                $con = $bd->conectar();
                 $sql = $con->prepare('update User set email = ? where id = ?');
                 $sql->execute(array(
                     $this->email,
@@ -146,8 +145,6 @@ class User
 
             } elseif (isset($_POST['passInput']) && !empty($_POST['passInput'])) {
                 $this->password = $_POST['passInput'];
-                $bd = new Conexao();
-                $con = $bd->conectar();
                 $sql = $con->prepare('update User set password = ? where id = ?');
                 $sql->execute(array(
                     $this->password,
@@ -161,8 +158,6 @@ class User
 
             } elseif (isset($_POST['addressInput']) && !empty($_POST['addressInput'])) {
                 $this->address = $_POST['addressInput'];
-                $bd = new Conexao();
-                $con = $bd->conectar();
                 $sql = $con->prepare('update User set address = ? where id = ?');
                 $sql->execute(array(
                     $this->address,
@@ -176,8 +171,6 @@ class User
 
             } elseif (isset($_POST['phoneInput']) && !empty($_POST['phoneInput'])) {
                 $this->phone = $_POST['phoneInput'];
-                $bd = new Conexao();
-                $con = $bd->conectar();
                 $sql = $con->prepare('update User set phone = ? where id = ?');
                 $sql->execute(array(
                     $this->phone,
@@ -234,6 +227,49 @@ class User
             echo "<script> alert('Não foi possível deletar a sua conta: {$msg->getMessage()}'); </script>";
         }
     }
+
+    public function UpdateUserBalance($type) {
+        try {
+            $bd = new Conexao();
+            $con = $bd->conectar();
+            switch($type) {
+                case 'R':
+                    $this->recipe = doubleval(substr($_POST["valueRegistration"], 2));
+                    $sql = $con->prepare('update User set recipe = recipe + ?, balance = balance + ? where id = ?');
+                    $sql->execute(array(
+                        $this->recipe,
+                        $this->recipe,
+                        $_SESSION['userToken']
+                    ));
+
+                    if($sql->rowCount() > 0) {
+                        echo '<script type="text/javascript">alert("Dados adicionados com sucesso!");</script>';
+                        header('location: ');
+                    }
+
+                break;
+
+                case 'D':
+
+                    $this->recipe = doubleval(substr($_POST["valueRegistration"], 2));
+                    $sql = $con->prepare('update User set expense = expense + ?, balance = balance - ? where id = ?');
+                    $sql->execute(array(
+                        $this->expense,
+                        $this->expense,
+                        $_SESSION['userToken']
+                    ));
+
+                    if($sql->rowCount() > 0) {
+                        echo '<script type="text/javascript">alert("Dados adicionados com sucesso!");</script>';
+                        header('location: ');
+                    }
+
+                break;
+            }
+        } catch (PDOException $msg) {
+            echo "<script> alert('Não foi possível atualizar os seus dados: {$msg->getMessage()}'); </script>";
+        }
+    } 
 
 }
 
