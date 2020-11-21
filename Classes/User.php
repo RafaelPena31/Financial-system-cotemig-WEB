@@ -12,6 +12,7 @@ class User
     public $password;
     public $recipe;
     public $expense;
+    public $balance;
 
     public function VerifyUserToCreate() {
         try {
@@ -51,10 +52,13 @@ class User
                 $this->address = $_POST["endereco"];
                 $this->phone = $_POST["telefone"];
                 $this->password = $_POST["senha"];
+                $this->expense = 0;
+                $this->recipe = 0;
+                $this->balance = 0;
 
                 $bd = new Conexao();
                 $con = $bd->conectar();
-                $sql = $con->prepare("insert into User(id,name,genre,email,address,phone,password) values(null,?,?,?,?,?,?)");
+                $sql = $con->prepare("insert into User(id,name,genre,email,address,phone,password, expense, recipe, balance) values(null,?,?,?,?,?,?,?,?,?)");
 
                 $sql->execute(array(
                     $this->name,
@@ -63,6 +67,9 @@ class User
                     $this->address,
                     $this->phone,
                     $this->password,
+                    $this->expense,
+                    $this->recipe,
+                    $this->balance
                 ));
 
                 if($sql->rowCount() > 0) {
@@ -244,14 +251,14 @@ class User
 
                     if($sql->rowCount() > 0) {
                         echo '<script type="text/javascript">alert("Dados adicionados com sucesso!");</script>';
-                        header('location: ');
+                        header('location: TransactionPage.php');
                     }
 
                 break;
 
-                case 'D':
+                case 'E':
 
-                    $this->recipe = doubleval(substr($_POST["valueRegistration"], 2));
+                    $this->expense = doubleval(substr($_POST["valueRegistration"], 2));
                     $sql = $con->prepare('update User set expense = expense + ?, balance = balance - ? where id = ?');
                     $sql->execute(array(
                         $this->expense,
@@ -261,7 +268,24 @@ class User
 
                     if($sql->rowCount() > 0) {
                         echo '<script type="text/javascript">alert("Dados adicionados com sucesso!");</script>';
-                        header('location: ');
+                        header('location: TransactionPage.php');
+                    }
+
+                break;
+
+                case 'D':
+
+                    $this->expense = doubleval(substr($_POST["valueRegistration"], 2));
+                    $sql = $con->prepare('update User set expense = expense + ?, balance = balance - ? where id = ?');
+                    $sql->execute(array(
+                        $this->expense,
+                        $this->expense,
+                        $_SESSION['userToken']
+                    ));
+
+                    if($sql->rowCount() > 0) {
+                        echo '<script type="text/javascript">alert("Dados adicionados com sucesso!");</script>';
+                        header('location: TransactionPage.php');
                     }
 
                 break;
