@@ -1,6 +1,7 @@
 <?php
 
 require_once "Conexao.php";
+require_once "User.php";
 
 class Registration
 {
@@ -13,16 +14,16 @@ class Registration
     public function CreateRegistration($type) {
             try {
               if(isset($_POST["valueRegistration"]) && !empty($_POST["valueRegistration"]) && isset($_POST["classRegistration"]) && !empty($_POST["classRegistration"]) && isset($_POST["dateRegistration"]) && !empty($_POST["dateRegistration"])) {
-                
+                $UserClass = new User();
+                $bd = new Conexao();
+                $con = $bd->conectar();
+
                 switch ($type) {
                   case 'D':
-
                     $this->categoryId = intval($_POST["classRegistration"]);
                     $this->value = doubleval(substr($_POST["valueRegistration"], 2));
                     $this->data = $_POST["dateRegistration"];
-                    var_dump($this->value);
-                    $bd = new Conexao();
-                    $con = $bd->conectar();
+
                     $sql = $con->prepare("insert into Registration(id,value,data,User_id,Category_id) values(null,?,?,?,?)");
     
                     $sql->execute(array(
@@ -33,8 +34,7 @@ class Registration
                     ));
 
                     if($sql->rowCount() > 0) {
-                      echo "<script> alert('Despesa registrada com sucesso.'); </script>";
-                      header('location: TransactionPage.php');
+                      $UserClass->UpdateUserBalance('E');
                     } else {
                       echo "<script> alert('Não foi possível registrar sua despesa.'); </script>";
                     }
@@ -47,8 +47,6 @@ class Registration
                     $this->value = doubleval(substr($_POST["valueRegistration"], 2));
                     $this->data = $_POST["dateRegistration"];
 
-                    $bd = new Conexao();
-                    $con = $bd->conectar();
                     $sql = $con->prepare("insert into Registration(id,value,data,User_id,Category_id) values(null,?,?,?,?)");
                     
                     $sql->execute(array(
@@ -59,8 +57,7 @@ class Registration
                     ));
 
                     if($sql->rowCount() > 0) {
-                      echo "<script> alert('Receita registrada com sucesso.'); </script>";
-                      header('location: TransactionPage.php');
+                      $UserClass->UpdateUserBalance('R');
                     } else {
                       echo "<script> alert('Não foi possível registrar sua receita.'); </script>";
                     }
