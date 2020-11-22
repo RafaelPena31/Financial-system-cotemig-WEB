@@ -273,19 +273,36 @@ class User
 
                 break;
 
-                case 'D':
+                case 'DR':
 
-                    $this->expense = doubleval(substr($_POST["valueRegistration"], 2));
-                    $sql = $con->prepare('update User set expense = expense + ?, balance = balance - ? where id = ?');
+                    $this->balance = $_GET["valueDelete"];
+                    $sql = $con->prepare('update User set recipe = recipe - ?, balance = balance - ? where id = ?');
                     $sql->execute(array(
-                        $this->expense,
-                        $this->expense,
+                        $this->balance,
+                        $this->balance,
                         $_SESSION['userToken']
                     ));
 
                     if($sql->rowCount() > 0) {
-                        echo '<script type="text/javascript">alert("Dados adicionados com sucesso!");</script>';
-                        header('location: TransactionPage.php');
+                        echo '<script type="text/javascript">alert("Dados atualizados com sucesso!");</script>';
+                        header('location: History.php?month='.$_GET['month']);
+                    }
+
+                break;
+
+                case 'DD':
+
+                    $this->balance = $_GET["valueDelete"];
+                    $sql = $con->prepare('update User set expense = expense - ?, balance = balance + ? where id = ?');
+                    $sql->execute(array(
+                        $this->balance,
+                        $this->balance,
+                        $_SESSION['userToken']
+                    ));
+
+                    if($sql->rowCount() > 0) {
+                        echo '<script type="text/javascript">alert("Dados atualizados com sucesso!");</script>';
+                        header('location: History.php?month='.$_GET['month']);
                     }
 
                 break;
