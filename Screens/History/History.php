@@ -4,10 +4,28 @@ header("Content-type:text/html; charset=utf8");
 session_start();
 
 require_once "../../Classes/Registration.php";
+require_once "../../Classes/User.php";
+require_once "../../Classes/Category.php";
 
 $Registration = new Registration();
+$User = new User();
+$Category = new Category();
 
 if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
+
+		$ListingUserData = $User->ListingUserData();
+		$expense = 0;
+		$recipe = 0;
+		$balance = 0;
+		
+		foreach ($ListingUserData as $UserData) :
+			$expense = $UserData->expense;
+			$recipe = $UserData->recipe;
+			$balance = $UserData->balance;
+		endforeach;
+
+		$ListingExpense = $Category->ListingCategory("D");
+		$ListingRecipe = $Category->ListingCategory("R");
 
     if(isset($_GET['desconnect']) && !empty($_GET['desconnect'])) {
         $_SESSION = array();
@@ -16,16 +34,12 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 		}
 		
 		if(isset($_GET['confirmDelete'])){
-			$Registration->DeleteRegistration();
+			$Registration->DeleteRegistration($_GET['typeDelete']);
 		}
 
 		if(isset($_GET['month']) && !empty($_GET['month'])){
 			$ListingExpense = $Registration->ListingRegistration('D', $_GET['month']);
 			$ListingReceive = $Registration->ListingRegistration('R', $_GET['month']);
-		}
-
-		if(isset($_POST['updateRegistration'])){
-			$Registration->UpdateRegistration();
 		}
 
 } else {
@@ -99,17 +113,17 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<article class="item-money-view">
-								<p class="item-money-text">Saldo: R$ 00,00</p>
+								<p class="item-money-text">Saldo: R$ <?php echo $balance; ?></p>
 							</article>
 						</div>
 						<div class="carousel-item">
 							<article class="item-money-view">
-								<p class="item-money-text">Despesa: R$ 00,00</p>
+								<p class="item-money-text">Despesa: R$ <?php echo $expense; ?></p>
 							</article>
 						</div>
 						<div class="carousel-item">
 							<article class="item-money-view">
-								<p class="item-money-text">Receita: R$ 00,00</p>
+								<p class="item-money-text">Receita: R$ <?php echo $recipe; ?></p>
 							</article>
 						</div>
 					</div>
@@ -176,10 +190,10 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 									<?php $new_date = date("d-m-Y", $timestamp); ?>
 									<td><?php echo $new_date; ?></td>
 									<td>
-										<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editarResp">
+										<a href="../UpdateRecipeRegistration/UpdateRecipeRegistration.php?updateId=<?php echo $registrar->id; ?>"class="btn btn-info btn-table">
 											<i class="fas fa-edit"></i>
-										</button>
-										<a href="History.php?confirmDelete=<?php echo $registrar->id ?>&month=<?php echo $_GET['month']; ?>" class="btn btn-danger btn-table">
+										</a>
+										<a href="History.php?confirmDelete=<?php echo $registrar->id ?>&valueDelete=<?php echo $registrar->value;?>&typeDelete=DR&month=<?php echo $_GET['month']; ?>" class="btn btn-danger btn-table">
 											<i class="fas fa-trash"></i>
 										</a>
 									</td>
@@ -238,10 +252,10 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 									<?php $new_date = date("d-m-Y", $timestamp); ?>
 									<td><?php echo $new_date; ?></td>
 									<td>
-										<button type="button" class="btn btn-info btn-table" data-toggle="modal" data-target="#editarDesp">
+										<a href="../UpdateExpenseRegistration/UpdateExpenseRegistration.php?updateId=<?php echo $registrar->id; ?>" class="btn btn-info btn-table">
 											<i class="fas fa-edit"></i>
-										</button>
-										<a href="History.php?confirmDelete=<?php echo $registrar->id ?>&month=<?php echo $_GET['month']; ?>" class="btn btn-danger btn-table">
+										</a>
+										<a href="History.php?confirmDelete=<?php echo $registrar->id ?>&valueDelete=<?php echo $registrar->value;?>&typeDelete=DD&month=<?php echo $_GET['month']; ?>" class="btn btn-danger btn-table">
 											<i class="fas fa-trash"></i>
 										</a>
 									</td>
