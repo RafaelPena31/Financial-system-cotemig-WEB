@@ -10,6 +10,8 @@ class Registration
     public $categoryExpenseId;
     public $categoryRecipeId;
     public $data;
+    public $class;
+    public $categoryId;
     
     public function CreateRegistration($type) {
             try {
@@ -97,40 +99,46 @@ class Registration
 }
     
 
-    public function UpdateRegistration(){
+    public function UpdateRegistration($id, $type){
         try {
-            if (isset($_POST['editar'])){
-                $this->id = $_GET["registrationID"];
-                $this->class = $_POST["nameCategory"];
-                $this->type = $_POST["typeRegistration"];
-                $this->value = $_POST["valueRegistration"];
+            if (isset($_POST['UpdateExpenseRegistration'])){
+                $this->class = intval($_POST["classRegistration"]);
+                $this->value = doubleval(substr($_POST["valueRegistration"], 2));
                 $this->data = $_POST["dateRegistration"];
+                $this->categoryId = intval($id);
 
+                $UserClass = new User();
                 $bd = new Conexao();
-
                 $con = $bd->conectar();
-                $sql = $con->prepare("update Registration set class = ?,type = ?, value = ?, data = ? where id = ?");
+                $sql = $con->prepare("update Registration set Category_id = ?, value = ?, data = ? where id = ?");
                 $sql->execute(array(
                     $this->class,
-                    $this->type,
                     $this->value,
                     $this->data,
-                    $_GET["confirmUpdate"]
+                    $this->categoryId
                 ));
                 if ($sql->rowCount() > 0) {
-                    header("location: History.php");
+                    switch ($type) {
+                      case 'R':
+                        $UserClass->UpdateUserBalance('R'); 
+                      break;
+                      case 'D':
+                        $UserClass->UpdateUserBalance('D'); 
+                      break;
+                    }
+                } else{
+                  header("location: ../History/History.php?month=1");
                 }
-                }else{
-                    header("location: History.php");
-                }
-            } catch (PDOException $msg) {
-                echo "Não foi possível alterar as receitas ou as categorias: " . $msg->getMassage();
-            }
-  }
+            } 
+          } catch (PDOException $msg) {
+            echo "Não foi possível alterar as receitas ou as categorias: " . $msg->getMassage();
+        }
+    }
 
   
-    public function DeleteRegistration(){
+    public function DeleteRegistration($type){
         try{
+            $UserClass = new User();
             $bd = new Conexao();
             $con = $bd->conectar();
             $sql = $con->prepare('delete from Registration where id = ?');
@@ -139,12 +147,30 @@ class Registration
             ));
 
             if ($sql->rowCount() > 0) {
-                echo '<script type="text/javascript">alert("Receita ou Despesa deletada com sucesso!");</script>';
-                header('location: History.php?month='.$_GET['month']);
+              $UserClass->UpdateUserBalance($type);
             }
         }catch (PDOException $msg) {
             echo "<script> alert('Não foi possivel deletar a categoria: {$msg->getMessage()}');</script>";
         }
+  }
+
+  public function ListingOneData($id) {
+    try {
+      $bd = new Conexao();
+      $con = $bd->conectar();
+      $sql = $con->prepare("select * from Registration where id = ?" );
+
+      $sql->execute(array(
+          $id
+      ));
+
+      if ($sql->rowCount() > 0) {
+           return $result = $sql->fetchAll(PDO::FETCH_CLASS);
+      } 
+
+    } catch (PDOException $msg) {
+      echo "<script> alert('Não foi possível listar suas despesas e suas receitas: {$msg->getMessage()}'); </script>";
+}
   }
 
 }
