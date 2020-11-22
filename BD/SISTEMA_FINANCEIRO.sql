@@ -37,7 +37,10 @@ foreign key (User_id) references User(id)
 
 -- select * from user;
 -- delete from User where id = 5;
--- update User set nome = 'rafael' where id = 1;
+-- update User set expense = 0, recipe = 0, balance = 0 where id = 1;
 -- insert into Registration(id,value,data,User_id,Category_id) values(null,4980,'2020-01-12',1,7);
 -- select * from Registration;
+ select * from Registration;
 -- select Category.name, Registration.data, Registration.value, Category.type, Category.class from Registration join Category on Category_id = Category.id and Registration.User_id = 1 where Category.type = 'D' and month(Registration.data) = 1;
+-- update Registration set Category_id = 1, value = 700, data = '2020-11-18' where id = 23;
+
