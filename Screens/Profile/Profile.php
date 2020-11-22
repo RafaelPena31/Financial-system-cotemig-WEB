@@ -14,6 +14,9 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
     $address = '';
     $phone = '';
     $pass = '';
+		$expense = 0;
+		$recipe = 0;
+		$balance = 0;
 
     foreach ($UserListData as $UserData) :
         $name = $UserData->name;
@@ -21,7 +24,10 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
         $email = $UserData->email;
         $address = $UserData->address;
         $phone = $UserData->phone;
-        $pass = $UserData->password;
+				$pass = $UserData->password;
+				$expense = $UserData->expense;
+				$recipe = $UserData->recipe;
+				$balance = $UserData->balance;
         endforeach;
 
     if(isset($_GET['desconnect']) && !empty($_GET['desconnect'])) {
@@ -364,17 +370,17 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<article class="item-money-view">
-								<p class="item-money-text">Saldo: R$ 00,00</p>
+								<p class="item-money-text">Saldo: R$ <?php echo $balance; ?></p>
 							</article>
 						</div>
 						<div class="carousel-item">
 							<article class="item-money-view">
-								<p class="item-money-text">Despesa: R$ 00,00</p>
+								<p class="item-money-text">Despesa: R$ <?php echo $expense; ?></p>
 							</article>
 						</div>
 						<div class="carousel-item">
 							<article class="item-money-view">
-								<p class="item-money-text">Receita: R$ 00,00</p>
+								<p class="item-money-text">Receita: R$ <?php echo $recipe; ?></p>
 							</article>
 						</div>
 					</div>
