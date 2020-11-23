@@ -235,7 +235,7 @@ class User
         }
     }
 
-    public function UpdateUserBalance($type) {
+    public function UpdateUserBalance($type, $categoryId, $lastValue) {
         try {
             $bd = new Conexao();
             $con = $bd->conectar();
@@ -306,6 +306,49 @@ class User
                     }
 
                 break;
+
+                case 'UR':
+
+                    $this->balance = doubleval(substr($_POST["valueRegistration"], 2));
+                    $sql = $con->prepare('update User set recipe = recipe + (? - ?), balance = balance + (? - ?) where id = ?');
+                    $sql->execute(array(
+                        $this->balance,
+                        $lastValue,
+                        $this->balance,
+                        $lastValue,
+                        $_SESSION['userToken']
+                    ));
+
+                    if($sql->rowCount() > 0) {
+                        echo '<script type="text/javascript">alert("Dados atualizados com sucesso!");</script>';
+                        header('location: ../History/History.php?month=1');
+                }
+            
+
+                break;
+
+                case 'UD':
+
+                    $this->balance = doubleval(substr($_POST["valueRegistration"], 2));
+
+                    $sql = $con->prepare('update User set expense = expense + (? - ?), balance = balance - (? - ?) where id = ?');
+                    $sql->execute(array(
+                        $this->balance,
+                        $lastValue,
+                        $this->balance,
+                        $lastValue,
+                        $_SESSION['userToken']
+                    ));
+
+                    if($sql->rowCount() > 0) {
+                        echo '<script type="text/javascript">alert("Dados atualizados com sucesso!");</script>';
+                        header('location: ../History/History.php?month=1');
+                    } else {
+                        echo '<script type="text/javascript">alert("Parou na ultima");</script>';
+                    }
+
+                break;
+
             }
         } catch (PDOException $msg) {
             echo "<script> alert('Não foi possível atualizar os seus dados: {$msg->getMessage()}'); </script>";
