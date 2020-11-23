@@ -36,7 +36,7 @@ class Registration
                     ));
 
                     if($sql->rowCount() > 0) {
-                      $UserClass->UpdateUserBalance('E', 0);
+                      $UserClass->UpdateUserBalance('E', 0, 0);
                     } else {
                       echo "<script> alert('Não foi possível registrar sua despesa.'); </script>";
                     }
@@ -59,7 +59,7 @@ class Registration
                     ));
 
                     if($sql->rowCount() > 0) {
-                      $UserClass->UpdateUserBalance('R', 0);
+                      $UserClass->UpdateUserBalance('R', 0, 0);
                     } else {
                       echo "<script> alert('Não foi possível registrar sua receita.'); </script>";
                     }
@@ -113,10 +113,10 @@ class Registration
 
                 $sql = $con->prepare('select value from Registration where id = ?'); 
                 $sql->execute(array(
-                    $categoryId
+                    $this->categoryId
                 ));
 
-                $lastValue = doubleval($sql->fetchAll(PDO::FETCH_CLASS));
+                $lastValue = $sql->fetchAll(PDO::FETCH_CLASS);
 
                 $sql = $con->prepare("update Registration set Category_id = ?, value = ?, data = ? where id = ?");
                 $sql->execute(array(
@@ -155,7 +155,7 @@ class Registration
             ));
 
             if ($sql->rowCount() > 0) {
-              $UserClass->UpdateUserBalance($type, 0);
+              $UserClass->UpdateUserBalance($type, 0, 0);
             }
         }catch (PDOException $msg) {
             echo "<script> alert('Não foi possivel deletar a categoria: {$msg->getMessage()}');</script>";
