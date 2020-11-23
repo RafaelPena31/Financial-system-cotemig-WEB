@@ -123,7 +123,7 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 									id="valueRegistration"
 									name="valueRegistration"
 									onchange="MoneyMask('valueRegistration')"
-									value="<?php echo $registrar->value; ?>"
+									value="<?php echo 'R$'.$registrar->value; ?>"
 								/>
 								<a href="../History/History.php?month=1" class="btn btn-light">Voltar</a>
 								<button type="submit" name="UpdateExpenseRegistration" class="btn btn-info">Alterar</button>
