@@ -36,7 +36,7 @@ class Registration
                     ));
 
                     if($sql->rowCount() > 0) {
-                      $UserClass->UpdateUserBalance('E');
+                      $UserClass->UpdateUserBalance('E', 0);
                     } else {
                       echo "<script> alert('Não foi possível registrar sua despesa.'); </script>";
                     }
@@ -59,7 +59,7 @@ class Registration
                     ));
 
                     if($sql->rowCount() > 0) {
-                      $UserClass->UpdateUserBalance('R');
+                      $UserClass->UpdateUserBalance('R', 0);
                     } else {
                       echo "<script> alert('Não foi possível registrar sua receita.'); </script>";
                     }
@@ -110,6 +110,14 @@ class Registration
                 $UserClass = new User();
                 $bd = new Conexao();
                 $con = $bd->conectar();
+
+                $sql = $con->prepare('select value from Registration where id = ?'); 
+                $sql->execute(array(
+                    $categoryId
+                ));
+
+                $lastValue = doubleval($sql->fetchAll(PDO::FETCH_CLASS));
+
                 $sql = $con->prepare("update Registration set Category_id = ?, value = ?, data = ? where id = ?");
                 $sql->execute(array(
                     $this->class,
@@ -120,10 +128,10 @@ class Registration
                 if ($sql->rowCount() > 0) {
                     switch ($type) {
                       case 'R':
-                        $UserClass->UpdateUserBalance('R'); 
+                        $UserClass->UpdateUserBalance('UR', $this->categoryId, $lastValue); 
                       break;
                       case 'D':
-                        $UserClass->UpdateUserBalance('D'); 
+                        $UserClass->UpdateUserBalance('UD', $this->categoryId, $lastValue); 
                       break;
                     }
                 } else{
@@ -147,7 +155,7 @@ class Registration
             ));
 
             if ($sql->rowCount() > 0) {
-              $UserClass->UpdateUserBalance($type);
+              $UserClass->UpdateUserBalance($type, 0);
             }
         }catch (PDOException $msg) {
             echo "<script> alert('Não foi possivel deletar a categoria: {$msg->getMessage()}');</script>";
