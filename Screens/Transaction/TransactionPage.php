@@ -110,9 +110,6 @@ if(isset($_SESSION['userToken']) && !empty($_SESSION['userToken'])) {
 							<a class="nav-link h5" href="../History/History.php?month=1">Histórico</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link h5" href="#">Dashboard</a>
-						</li>
-						<li class="nav-item">
 							<a class="nav-link h5" href="../Profile/Profile.php">Perfil</a>
 						</li>
 						<li class="nav-item">
