@@ -313,16 +313,22 @@ class User
                     $sql = $con->prepare('update User set recipe = recipe + (? - ?), balance = balance + (? - ?) where id = ?');
                     $sql->execute(array(
                         $this->balance,
-                        $lastValue,
+                        doubleval($lastValue[0]->value),
                         $this->balance,
-                        $lastValue,
+                        doubleval($lastValue[0]->value),
                         $_SESSION['userToken']
                     ));
 
                     if($sql->rowCount() > 0) {
                         echo '<script type="text/javascript">alert("Dados atualizados com sucesso!");</script>';
                         header('location: ../History/History.php?month=1');
-                }
+                    } else {
+                        if ($this->balance === doubleval($lastValue[0]->value)) {
+                            header('location: ../History/History.php?month=1');
+                        } else {
+                        echo '<script type="text/javascript">alert("Não foi possível alterar os dados. Tente novamente.");</script>';
+                        }
+                    }
             
 
                 break;
@@ -331,12 +337,13 @@ class User
 
                     $this->balance = doubleval(substr($_POST["valueRegistration"], 2));
 
+
                     $sql = $con->prepare('update User set expense = expense + (? - ?), balance = balance - (? - ?) where id = ?');
                     $sql->execute(array(
                         $this->balance,
-                        $lastValue,
+                        doubleval($lastValue[0]->value),
                         $this->balance,
-                        $lastValue,
+                        doubleval($lastValue[0]->value),
                         $_SESSION['userToken']
                     ));
 
@@ -344,14 +351,18 @@ class User
                         echo '<script type="text/javascript">alert("Dados atualizados com sucesso!");</script>';
                         header('location: ../History/History.php?month=1');
                     } else {
-                        echo '<script type="text/javascript">alert("Parou na ultima");</script>';
+                        if ($this->balance === doubleval($lastValue[0]->value)) {
+                            header('location: ../History/History.php?month=1');
+                        } else {
+                        echo '<script type="text/javascript">alert("Não foi possível alterar os dados. Tente novamente.");</script>';
+                        }
                     }
 
                 break;
 
             }
         } catch (PDOException $msg) {
-            echo "<script> alert('Não foi possível atualizar os seus dados: {$msg->getMessage()}'); </script>";
+            echo "<> alert('Não foi possível atualizar os seus dados: {$msg->getMessage()}'); </>";
         }
     } 
 
