@@ -1,7 +1,7 @@
-# 💻 Sistema Financeiro - WEB - PHP / JS
-## (Sistema de gestão financeira pessoal e empresarial)
+# 💻 Financial System - WEB - PHP / JS
+## (Personal and business financial management system)
 
-Sistema financeiro para auxiliar na gestão monetária pessoal ou empresarial a partir de um software para web com PHP, JS e MySql.
+Financial system to assist in personal or business monetary management using web software with PHP, JS and MySql.
 
-O projeto utiliza **PHP**, **JS** e integração **MySql** a partir das tecnologias para WEB 
+The project uses ** PHP **, ** JS ** and ** MySql ** integration from WEB technologies. 
 
